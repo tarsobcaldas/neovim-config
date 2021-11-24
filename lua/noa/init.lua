@@ -1,0 +1,2 @@
+require("noa.telescope")
+
