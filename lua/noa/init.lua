@@ -1,2 +1,8 @@
 require("noa.telescope")
-
+require("noa.lspconfig")
+require("noa.toggleterm")
+require("noa.packer")
+require("noa.statusline")
+require("noa.settings")
+require("noa.mappings")
+require("noa.autopairs")

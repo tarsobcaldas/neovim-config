@@ -35,8 +35,5 @@ if !exists('g:ycm_semantic_triggers')
 endif
 au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
-let g:AutoPairs = autopairs#AutoPairsDefine([{'open': '\\[', 'close': '\]', 'filetype': 'tex'}])
-" let g:AutoPairs = autopairs#AutoPairsDefine([{'open': '\\(', 'close': '\)', 'filetype': 'tex'}])
 
-
-" inoremap $ \(
+" inoremap $ \( 
