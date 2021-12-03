@@ -69,27 +69,32 @@ return require('packer').startup(function()
 
   }
   
-
-  -- Integração com scripts de powershell (precisa ser melhor configurado)
-  -- use {'pprovost/vim-ps1'}
-
-  -- Aumento de funcionalidades de <Tab>
-  use {'ervandew/supertab'}
+	-- use {
+			-- "ervandew/supertab"
+	-- }
 
   -- Configuração de LSP
-  use {'neovim/nvim-lspconfig'}
-
-  -- Auto completar
   use {
-	'ms-jpq/coq_nvim', branch = 'coq', requires = {
-	  -- 9000+ Snippets
-	  {'ms-jpq/coq.artifacts', branch = 'artifacts'},
-	  -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
-	  -- Need to **configure separately**
-	  -- {'ms-jpq/oq.thirdparty', branch = '3p'}
+			'neovim/nvim-lspconfig',
 	}
-  }
 
+  -- -- Autocompletar
+  -- use {
+			-- 'neoclide/coc.nvim', branch = 'release'
+  -- }
+
+
+	use {'hrsh7th/cmp-nvim-lsp',
+			requires = {
+				'hrsh7th/cmp-buffer',
+				'hrsh7th/cmp-path',
+				'hrsh7th/cmp-cmdline',
+				'hrsh7th/nvim-cmp',
+				'dcampos/nvim-snippy',
+				'honza/vim-snippets',
+				'onsails/lspkind-nvim'
+			}
+	}
 
 
   -- Fuzzy finding integrado ao Neovim

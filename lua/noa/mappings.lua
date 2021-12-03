@@ -53,8 +53,11 @@ nmap ("]<space>",  "<cmd>put =repeat(nr2char(10), v:count1)<cr>")
 
 nmap ("<Leader>x", "<cmd>bd<cr>")
 
-nmap ("]b", "<cmd>bn<cr>")
-nmap ("[b", "<cmd>bp<cr>")
+nmap ("]b", "<cmd>BufferLineCycleNext<cr>")
+nmap ("[b", "<cmd>BufferLineCyclePrev<cr>")
+
+nmap ("<space><", "<cmd>BufferLineMovePrev<cr>")
+nmap ("<space>>", "<cmd>BufferLineMoveNext<cr>")
 
 -- Terminal mode:
 tmap ("<M-h>", "<c-\\><c-n><c-w>h")

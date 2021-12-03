@@ -10,7 +10,7 @@ vim.cmd([[
 	endif
 
 	if has('win32')
-		let g:python3_host_prog='$HOME/AppData/Local/Programs/Python/Python310/python.exe'
+		let g:python3_host_prog='vim.env.home/AppData/Local/Programs/Python/Python310/python.exe'
 		let g:python_host_prog= 'C:/Python27/python.exe'
 	endif
 
@@ -41,11 +41,13 @@ vim.cmd([[
 	set shiftwidth=4
 	set autoindent
 	set smartindent
-	set tabstop=4
+	set tabstop=2
 
 	set undodir=~/.config/nvim/undodir
 	set undofile
 	set termguicolors
 
 	set keymap=accents
+
+	set completeopt=menu,menuone,noselect
 ]])
