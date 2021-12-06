@@ -13,21 +13,22 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Simple plugins can be specified as strings
-  use '9mm/vim-closer'
-
   -- Lazy loading:
   -- Load on specifc commands
   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
 
-
+  -- Faz preview de markdown no browser (pesquisar mais)
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
   -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
+		requires = {"nvim-treesitter/playground"}
+  }
+		
 
-  -- Post-install/update hook with call of vimscript function with argument
-  use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+  use { 'kyazdani42/nvim-tree.lua',
+	requires = {'kyazdani42/nvim-web-devicons'},
+  }
 
 
   -- Use dependency and run lua function after load
@@ -37,13 +38,15 @@ return require('packer').startup(function()
   }
 
   -- You can specify multiple plugins in a single call
-  use {'tjdevries/colorbuddy.vim'}
+  use {'tjdevries/colorbuddy.vim',
+		-- requires = {'marko-cerovac/material.nvim'}	
+	}
 
-  -- You can alias plugin names
-  -- use {'dracula/vim', as = 'dracula'}
+	use({'EdenEast/nightfox.nvim'})	
+	use ({'sainnhe/edge'})
 
-  use {'lervag/vimtex'}
-
+  use {'lervag/vimtex', ft = tex}
+ 
   -- Alterações em volta dos objetos de texto
   use {'tpope/vim-surround'}
 
@@ -51,13 +54,15 @@ return require('packer').startup(function()
   use {'tpope/vim-commentary'}
 
   -- Criação de sessões
-  use {'tpope/vim-obsession'}
+	use {'Shatur/neovim-session-manager'}
 
   -- Integração com Git
   use {'tpope/vim-fugitive'}
 
   -- Esquemas de cores variados
   use {'rafi/awesome-vim-colorschemes'}
+
+	-- use {'Yagua/nebulous.nvim'}
 
   -- Barra inferior com informações úteis
   use {
@@ -69,32 +74,31 @@ return require('packer').startup(function()
 
   }
   
-	-- use {
-			-- "ervandew/supertab"
-	-- }
-
   -- Configuração de LSP
   use {
 			'neovim/nvim-lspconfig',
 	}
 
-  -- -- Autocompletar
-  -- use {
-			-- 'neoclide/coc.nvim', branch = 'release'
-  -- }
-
-
-	use {'hrsh7th/cmp-nvim-lsp',
+  -- Auto completar
+	use {'hrsh7th/nvim-cmp',
 			requires = {
+				'hrsh7th/cmp-nvim-lsp',
 				'hrsh7th/cmp-buffer',
 				'hrsh7th/cmp-path',
 				'hrsh7th/cmp-cmdline',
-				'hrsh7th/nvim-cmp',
+				'hrsh7th/cmp-omni',
+				'hrsh7th/cmp-emoji',
+				'hrsh7th/cmp-nvim-lua',
+				'petertriho/cmp-git',
+				{"kdheepak/cmp-latex-symbols", ft = {"tex"}},
+				'dcampos/cmp-snippy',
+				'lukas-reineke/cmp-under-comparator',
 				'dcampos/nvim-snippy',
 				'honza/vim-snippets',
-				'onsails/lspkind-nvim'
+				'onsails/lspkind-nvim',
 			}
 	}
+
 
 
   -- Fuzzy finding integrado ao Neovim
@@ -108,6 +112,7 @@ return require('packer').startup(function()
   -- Terminal de fácil acesso
   use {'akinsho/toggleterm.nvim'}
 
+	-- Liga relativenumber somente quando faz sentido
   use {'jeffkreeftmeijer/vim-numbertoggle'}
 
   use {'windwp/nvim-autopairs'}

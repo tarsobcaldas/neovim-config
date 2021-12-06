@@ -1,7 +1,8 @@
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    -- theme = 'nightfox',
+    theme = 'edge',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -11,7 +12,7 @@ require'lualine'.setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff'},
     lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {{'diagnostics', sources={'nvim_lsp'}}, 'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -96,11 +97,5 @@ require('bufferline').setup {
   --   -- can also be a table containing 2 custom separators
   --   -- [focused and unfocused]. eg: { '|', '|' }
     separator_style = "slant",
-  --   enforce_regular_tabs = false | true,
-  --   always_show_bufferline = true | false,
-  --   sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
-  --     -- add custom logic
-  --     return buffer_a.modified > buffer_b.modified
-  --   end
   }
 }

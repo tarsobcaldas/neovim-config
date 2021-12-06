@@ -10,9 +10,11 @@ require('telescope').setup{
 		prompt_position = "top",
 	},
 	sorting_strategy = "ascending",
+
 	preview = {
 		treesitter = "true",
 	},
+
     file_previewer = previewers.vim_buffer_cat.new,
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
@@ -28,4 +30,4 @@ require('telescope').setup{
     },
   }
 }
-
+require('telescope').load_extension('sessions')

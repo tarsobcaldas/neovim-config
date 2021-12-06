@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+% arara: xelatex
+
+\documentclass[tikz, 12pt]{standalone}
+
+\usepackage{la-tikzconfig}
+
+\begin{document}
+
+$SELECTION$0
+
+\end{document}
+]]></content>
+	<tabTrigger>standtikz</tabTrigger>
+	<scope>text.tex.latex.tikz, text.tex.latex</scope>
+	<description>Standalone document class for tikz picutre</description>
+</snippet>

@@ -26,10 +26,11 @@ end
 
 
  -- Telescope mappings
-nmap ("<Space>f", "<cmd>Telescope find_files<cr>")
-nmap ("<Space>g", "<cmd>Telescope live_grep<cr>")
-nmap ("<Space>b", "<cmd>Telescope buffers<cr>")
-nmap ("<leader>fh", "<cmd>Telescope help_tags<cr>")
+nmap ("<Space>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
+nmap ("<Space>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+nmap ("<Space>b", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+nmap ("<Space>s", "<cmd>Telescope sessions<cr>")
+nmap ("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
 -- Undo tree
 nmap ("<F5>", "<cmd>UndotreeToggle<cr>")
@@ -88,4 +89,13 @@ nmap ("<M-`>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>")
 imap ("<M-`>", "<esc><cmd>exe v:count1 . 'ToggleTerm'<cr>")
 vmap ("<M-`>", "<esc><cmd>exe v:count1 . 'ToggleTerm'<cr>")
 tmap ("<M-`>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>")
+
+nmap ( "<leader>mt", "<Plug>MarkdownPreviewToggle" )
+
+nmap ("<C-k><C-B>", "<cmd>NERDTreeToggle<CR>")
+nmap ("<leader>nf>", "<cmd>NERDTreeFind")
+
+nmap ("<C-n>", ":NvimTreeToggle<CR>")
+nmap ("<leader>r", ":NvimTreeRefresh<CR>")
+nmap ("<leader>n", ":NvimTreeFindFile<CR>")
 
