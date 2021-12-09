@@ -1,4 +1,3 @@
-require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
 local lspconfig = require'lspconfig'
 local lspkind = require('lspkind')
 
@@ -6,16 +5,20 @@ lspconfig.gopls.setup{
   root_dir = lspconfig.util.root_pattern('.git');
 }
 
-local cmp = require'cmp'
-local snippy = require 'snippy'
-
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
+vim.lsp.omnifunc()
+
+
+-- require'lspconfig'.sumneko_lua.setup{}
+
+-- require'lspconfig'.ltex.setup{}
+
 require'lspconfig'.texlab.setup {
 		cmd = { "texlab" },
-				filetypes = { "tex", "bib", "cls", "sty", "def"
+				filetypes = { "tex", "bib", "cls", "sty", "def", "clo"
 		},
 
     -- root_dir = function(fname)
@@ -57,17 +60,6 @@ require'lspconfig'.texlab.setup {
     -- single_file_support = false
 }
 
--- snippy.setup({
---     mappings = {
---         is = {
---             ["<Tab>"] = "expand_or_advance",
---             ["<S-Tab>"] = "previous",
---         },
---         -- nx = {
---         --     ["<leader>x"] = "cut_text",
---         -- },
---     },
--- })
 
 
 local has_words_before = function()
@@ -75,58 +67,68 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
+local cmp = require'cmp'
 cmp.setup({
 
-		snippet = {
-			expand = function(args)
-					require'snippy'.expand_snippet(args.body)
-			end,
-		},
+	snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+      end,
+    },
 
-		mapping = {
-			['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-			['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-			['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-			['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-			['<C-e>'] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-			}),
-			['<CR>'] = cmp.mapping.confirm({ select = true }),
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      -- Accept currently selected item. If none selected, `select` first item.
+      -- Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
 			
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif snippy.can_expand_or_advance() then
-          snippy.expand_or_advance()
-        elseif has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
   
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif snippy.can_jump(-1) then
-          snippy.previous()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, { "i", "s" }),
 
-		},
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, { "i", "s" }),
+
+    },
 
 		sources = cmp.config.sources({
-			{ name = 'snippy' }, -- For snippy users.
+			{ name = 'vsnip' }, -- For snippy users.
 		  { name = 'nvim_lsp' },
 			{ name = 'buffer' },
 			{ name = 'omni' },
 			{ name = "latex_symbols"},
-			{ name = "nvim-lua"},
-			{ name = "emoji"},
-		  { name = "cmp-git"}
+			-- { name = "nvim-lua"},
+			-- { name = "emoji"},
+		  -- { name = "cmp-git"}
 		}	),
  
 		formatting = {
@@ -136,8 +138,9 @@ cmp.setup({
 								buffer = "[Buffer]",
 								nvim_lsp = "[LSP]",
 								latex_symbols = "[Symbol]",
-								luasnip = "[Snippet]",
-								emoji = "[Emoji]"
+								vsnip = "[Snippet]",
+								emoji = "[Emoji]",
+								omni = "[Omnifunc]"
 						}),
 				})
 		},
@@ -154,6 +157,7 @@ cmp.setup({
             cmp.config.compare.order,
         },
 		}
+
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

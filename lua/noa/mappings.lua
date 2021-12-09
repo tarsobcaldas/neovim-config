@@ -25,12 +25,7 @@ end
 
 
 
- -- Telescope mappings
-nmap ("<Space>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-nmap ("<Space>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-nmap ("<Space>b", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-nmap ("<Space>s", "<cmd>Telescope sessions<cr>")
-nmap ("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+
 
 -- Undo tree
 nmap ("<F5>", "<cmd>UndotreeToggle<cr>")
@@ -49,7 +44,7 @@ nmap ("[e",  "<cmd>execute 'move -1-'. v:count1<cr>")
 nmap ("]e",  "<cmd>execute 'move +'. v:count1<cr>")
 
 -- add empty lin"es"
-nmap ("[<space>",  "<cmd>put! =repeat(nr2char(10), v:count1)<cr>")
+nmap ("[<space>",  "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>")
 nmap ("]<space>",  "<cmd>put =repeat(nr2char(10), v:count1)<cr>")
 
 nmap ("<Leader>x", "<cmd>bd<cr>")
@@ -85,17 +80,8 @@ nmap ("<M-j>", "<c-w>j")
 nmap ("<M-k>", "<c-w>k")
 nmap ("<M-l>", "<c-w>l")
 
-nmap ("<M-`>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>")
-imap ("<M-`>", "<esc><cmd>exe v:count1 . 'ToggleTerm'<cr>")
-vmap ("<M-`>", "<esc><cmd>exe v:count1 . 'ToggleTerm'<cr>")
-tmap ("<M-`>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>")
 
 nmap ( "<leader>mt", "<Plug>MarkdownPreviewToggle" )
 
-nmap ("<C-k><C-B>", "<cmd>NERDTreeToggle<CR>")
-nmap ("<leader>nf>", "<cmd>NERDTreeFind")
 
-nmap ("<C-n>", ":NvimTreeToggle<CR>")
-nmap ("<leader>r", ":NvimTreeRefresh<CR>")
-nmap ("<leader>n", ":NvimTreeFindFile<CR>")
 

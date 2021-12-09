@@ -1,13 +1,15 @@
 vim.o.encoding = "utf-8"
 
 vim.cmd([[
+
 	if has ('win32')
-		let &shell = has('win32') ? 'powershell' : 'pwsh'
-		let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Tet.Encoding]::UTF8;'
-		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-		set shellquote= shellxquote=
+	  let &shell = has('win32') ? 'powershell' : 'pwsh'
+	  let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned'
+	  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+	  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+	  set shellquote= shellxquote=
 	endif
+
 	if has('win32')
 		let g:python3_host_prog='vim.env.home/AppData/Local/Programs/Python/Python310/python.exe'
 		let g:python_host_prog= 'C:/Python27/python.exe'
@@ -36,7 +38,7 @@ vim.cmd([[
 	" let g:netrw_liststyle = 3	
 	" let g:netrw_browse_split = 4
 
-	set shiftwidth=4
+	set shiftwidth=2
 	set autoindent
 	set smartindent
 	set tabstop=2
@@ -53,4 +55,15 @@ vim.cmd([[
   "	autocmd Filetype sty set syntax=tex
   "	autocmd Filetype cfg set syntax=tex
 
+	filetype plugin on
+	set omnifunc=syntaxcomplete#Complete
+
+	let g:mapleader="\<Space>"
+
+	set re=1
+
+	set ttimeoutlen=90
+
 ]])
+
+

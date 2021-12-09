@@ -25,27 +25,22 @@ return require('packer').startup(function()
 		requires = {"nvim-treesitter/playground"}
   }
 		
-
-  use { 'kyazdani42/nvim-tree.lua',
-	requires = {'kyazdani42/nvim-web-devicons'},
-  }
-
-
-  -- Use dependency and run lua function after load
+  -- Integração com Git
   use {
-    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('gitsigns').setup() end
-  }
-
-  -- You can specify multiple plugins in a single call
-  use {'tjdevries/colorbuddy.vim',
-		-- requires = {'marko-cerovac/material.nvim'}	
+				'lewis6991/gitsigns.nvim',
+				requires = {
+					'nvim-lua/plenary.nvim',
+					'tpope/vim-fugitive',
+				},
+				config = function() require('gitsigns').setup() end
 	}
 
 	use({'EdenEast/nightfox.nvim'})	
 	use ({'sainnhe/edge'})
 
-  use {'lervag/vimtex', ft = tex}
+  use {
+		'lervag/vimtex',
+	}	
  
   -- Alterações em volta dos objetos de texto
   use {'tpope/vim-surround'}
@@ -53,60 +48,67 @@ return require('packer').startup(function()
   -- Comentar texto usando gcc
   use {'tpope/vim-commentary'}
 
-  -- Criação de sessões
-	use {'Shatur/neovim-session-manager'}
-
-  -- Integração com Git
-  use {'tpope/vim-fugitive'}
-
   -- Esquemas de cores variados
   use {'rafi/awesome-vim-colorschemes'}
 
-	-- use {'Yagua/nebulous.nvim'}
-
   -- Barra inferior com informações úteis
   use {
-	'nvim-lualine/lualine.nvim',
-	requires = {
-		{'kyazdani42/nvim-web-devicons', opt = true},
-		{'akinsho/bufferline.nvim'},
-	}
-
+		'nvim-lualine/lualine.nvim',
+		requires = {
+			{'kyazdani42/nvim-web-devicons', opt = true},
+			{'akinsho/bufferline.nvim'},
+		}
   }
   
   -- Configuração de LSP
   use {
 			'neovim/nvim-lspconfig',
+			requires = {
+				 'williamboman/nvim-lsp-installer'
+		}
 	}
 
   -- Auto completar
-	use {'hrsh7th/nvim-cmp',
-			requires = {
-				'hrsh7th/cmp-nvim-lsp',
-				'hrsh7th/cmp-buffer',
-				'hrsh7th/cmp-path',
-				'hrsh7th/cmp-cmdline',
-				'hrsh7th/cmp-omni',
-				'hrsh7th/cmp-emoji',
-				'hrsh7th/cmp-nvim-lua',
-				'petertriho/cmp-git',
-				{"kdheepak/cmp-latex-symbols", ft = {"tex"}},
-				'dcampos/cmp-snippy',
-				'lukas-reineke/cmp-under-comparator',
-				'dcampos/nvim-snippy',
-				'honza/vim-snippets',
-				'onsails/lspkind-nvim',
-			}
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+			'hrsh7th/cmp-omni',
+			'hrsh7th/cmp-emoji',
+			'hrsh7th/cmp-nvim-lua',
+			'petertriho/cmp-git',
+			{"kdheepak/cmp-latex-symbols", ft = {"tex"}},
+			'lukas-reineke/cmp-under-comparator',
+			'onsails/lspkind-nvim',
+		}
+	}
+	
+	use {
+		'hrsh7th/vim-vsnip',
+		requires = {
+			'hrsh7th/cmp-vsnip',
+			'hrsh7th/vim-vsnip-integ',
+			'honza/vim-snippets',
+			'rafamadriz/friendly-snippets'	
+		}
 	}
 
-
-
   -- Fuzzy finding integrado ao Neovim
-  use {'nvim-telescope/telescope.nvim'}
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+  use {
+		'nvim-telescope/telescope.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
+			'nvim-telescope/telescope-project.nvim',
+		}
+	}
 
+	use {'Shatur/neovim-session-manager'}
 
-  -- Árvore de desfazer (precisa ser melhor estudado)
+  -- Árvore de desfazer 
   use {'mbbill/undotree'}
 
   -- Terminal de fácil acesso
