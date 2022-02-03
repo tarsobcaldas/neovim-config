@@ -23,12 +23,12 @@ local cond = require('nvim-autopairs.conds')
 
 npairs.add_rules({
 	Rule("(", ")", {"tex", "latex"})
-	:with_pair(cond.not_after_regex_check("\\"))
+	:with_pair(cond.not_before_text("\\"))
 })
 
--- npairs.add_rules({
--- 	Rule("\\(", "\\)", {"tex", "latex"})
--- })
+npairs.add_rules({
+	Rule("\\(", "\\)", {"tex", "latex"})
+})
 
 npairs.add_rules({
 	Rule("\\[", "\\]", {"tex", "latex"})

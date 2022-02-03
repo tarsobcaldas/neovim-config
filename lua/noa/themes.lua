@@ -1,19 +1,10 @@
 -- require('nightfox').load("duskfox")
 
+vim.cmd([[
+ 	" colorscheme edge
+	colorscheme zephyrium
+]])
 
- vim.cmd([[
-
- 	" let g:edge_style = ''
- 	colorscheme edge
- 	 
- ]])
-
--- vim.cmd([[
-
-		
-
--- ]])
-
--- require('xresources')
-
-
+-- require('github-theme').setup({
+-- 	theme_style = "dark"
+-- })

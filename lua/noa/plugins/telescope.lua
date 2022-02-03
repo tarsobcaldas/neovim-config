@@ -43,20 +43,37 @@ require('telescope').setup{
 		},
 	},
 
-	extensions = {}
+	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown {},
+		},
+		file_browser = {
+			theme = "ivy",
+		},
+		project = {
+			require("telescope.themes").get_dropdown {},
+		}
+	}
 }
 
-
+require("telescope").load_extension("ui-select")
 require'telescope'.load_extension('project')
-require('telescope').load_extension('sessions')
+require'telescope'.load_extension('file_browser')
+require'telescope'.load_extension('arecibo')
 
 
 -- Telescope mappings
 nmap ("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nmap ("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-nmap ("<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-nmap ("<leader>fs", "<cmd>Telescope sessions<cr>")
+nmap ("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+nmap ("<leader>fs", "<cmd>Telescope file_browser<cr>")
 nmap ("<leader>fp", "<cmd>Telescope project<cr>")
 nmap ("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-nmap ("<leader>tc", "<cmd>lua require('telescope.builtin').colorscheme()<cr>")
--- nmap ("<leader>fb", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>")
+nmap ("<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>")
+nmap ("<leader>fc", "<cmd>lua require('telescope.builtin').colorscheme()<cr>")
+nmap ("<leader>fo", "<cmd>lua require('telescope.builtin').oldfiles()<cr>")
+nmap ("<leader>fq", "<cmd>lua require('telescope.builtin').quickfix()<cr>")
+nmap ("<leader>fm", "<cmd>lua require('telescope.builtin').marks()<cr>")
+nmap ("<leader>fre", "<cmd>lua require('telescope.builtin').resume()<cr>")
+nmap ("<leader>frg", "<cmd>lua require('telescope.builtin').registers()<cr>")
+nmap ("<leader>fw", "<cmd>lua require('telescope').extensions.arecibo.websearch()<cr>")

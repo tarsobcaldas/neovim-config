@@ -7,6 +7,4 @@ vim.cmd([[
 
 		" Open help vertically
 		cabbrev h vert h
-
-		iabbrev $ \(
 ]])
