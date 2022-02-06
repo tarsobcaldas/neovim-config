@@ -1,8 +1,3 @@
--- nmap ("<M-`>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>")
--- imap ("<M-`>", "<esc><cmd>exe v:count1 . 'ToggleTerm'<cr>")
--- vmap ("<M-`>", "<esc><cmd>exe v:count1 . 'ToggleTerm'<cr>")
--- tmap ("<M-`>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>")
-
 require("toggleterm").setup{
 
   -- -- size can be a number or function which is passed the current terminal

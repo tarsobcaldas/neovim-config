@@ -37,17 +37,24 @@ local options = {
 }
 
 vim.opt.shortmess:append "c"
+vim.cmd "colorscheme zephyrium"
+vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd "set iskeyword+=-"
 
-vim.g.mapleader = ' '
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
 
-vim.o.encoding = "utf-8"
+settings = {
+  mapleader = ' ',
+  lightspeed_no_default_kaymaps = 1
+}
+
+for k, v in pairs(settings) do
+  vim.g[k] = v
+end
 
 vim.cmd([[
 	if has ('win32')

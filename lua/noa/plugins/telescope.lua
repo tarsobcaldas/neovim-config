@@ -63,17 +63,3 @@ require'telescope'.load_extension('arecibo')
 
 
 -- Telescope mappings
-nmap ("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-nmap ("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-nmap ("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-nmap ("<leader>fs", "<cmd>Telescope file_browser<cr>")
-nmap ("<leader>fp", "<cmd>Telescope project<cr>")
-nmap ("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-nmap ("<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>")
-nmap ("<leader>fc", "<cmd>lua require('telescope.builtin').colorscheme()<cr>")
-nmap ("<leader>fo", "<cmd>lua require('telescope.builtin').oldfiles()<cr>")
-nmap ("<leader>fq", "<cmd>lua require('telescope.builtin').quickfix()<cr>")
-nmap ("<leader>fm", "<cmd>lua require('telescope.builtin').marks()<cr>")
-nmap ("<leader>fre", "<cmd>lua require('telescope.builtin').resume()<cr>")
-nmap ("<leader>frg", "<cmd>lua require('telescope.builtin').registers()<cr>")
-nmap ("<leader>fw", "<cmd>lua require('telescope').extensions.arecibo.websearch()<cr>")

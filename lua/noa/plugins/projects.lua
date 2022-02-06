@@ -9,7 +9,5 @@ require('session_manager').setup({
   autosave_ignore_not_normal = true, -- Plugin will not save a session when no writable and listed buffers are opened.
 })
 
-nmap ("<leader>sl", ":SessionManager load_session<cr>")
-nmap ("<leader>sd", ":SessionManager delete_session<cr>")
 
 require('gitsigns').setup()

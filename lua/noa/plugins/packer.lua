@@ -92,9 +92,7 @@ return require("packer").startup(function(use)
 	use({ "tpope/vim-surround" })
 
 	-- Comentar texto usando gcc
-	use({ "numToStr/Comment.nvim",
-		config = require("Comment").setup({})
-	})
+	use({ "tpope/vim-commentary" })
 
 	-- Barra inferior com informações úteis
 	use({
@@ -106,8 +104,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"kyazdani42/nvim-web-devicons",
-		opt = true,
-		-- config = require("nvim-web-devicons").setup({})
+		config = require("nvim-web-devicons").setup({})
 	})
 
 	-- Configuração de LSP
@@ -118,13 +115,15 @@ return require("packer").startup(function(use)
 			"jose-elias-alvarez/null-ls.nvim",
 			"mfussenegger/nvim-lint",
 			{
-				"folke/lsp-colors.nvim", config = require("lsp-colors").setup()
+				"folke/lsp-colors.nvim",
+				config = require("lsp-colors").setup(),
 			},
 		},
 	})
 
 	use({
-		"folke/trouble.nvim", config =  require("trouble").setup({})
+		"folke/trouble.nvim",
+		config = require("trouble").setup({}),
 	})
 
 	-- Auto completar
@@ -185,6 +184,9 @@ return require("packer").startup(function(use)
 
 	-- Mantém o layout da janela ao fechar um buffer
 	use({ "famiu/bufdelete.nvim" })
+  
+  use({ "lukas-reineke/indent-blankline.nvim" })
+
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

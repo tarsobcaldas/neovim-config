@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[% chktex]]></content>
-	<tabTrigger>chk</tabTrigger>
-	<description>Esconde erro chktex</description>
-	<scope>text.tex.latex</scope>
-</snippet>
