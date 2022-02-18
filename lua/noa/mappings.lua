@@ -45,7 +45,7 @@ local normal = {
 	["<leader>qf"] = ":copen<cr>",
 
 	-- Trouble
-	["<leader>tt"] = "<cmd>Trouble<cr>",
+	["<leader>tt"] = "<cmd>TroubleToggle<cr>",
 	["<leader>tw"] = "<cmd>Trouble workspace_diagnostics<cr>",
 	["<leader>td"] = "<cmd>Trouble document_diagnostics<cr>",
 	["<leader>tl"] = "<cmd>Trouble loclist<cr>",
@@ -71,6 +71,9 @@ local normal = {
 	-- SessionManager
 	["<leader>sl"] = ":SessionManager load_session<cr>",
 	["<leader>sd"] = ":SessionManager delete_session<cr>",
+
+  -- Gkeep
+  ["gk"] = ":GkeepCheck<cr>",
 }
 
 local insert = {

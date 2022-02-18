@@ -44,6 +44,8 @@ return require("packer").startup(function(use)
 	-- Lazy loading:
 	-- Load on specifc commands
 	use({ "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } })
+  use({ "tpope/vim-abolish" })
+  use({ "tpope/vim-repeat" })
 
 	-- Faz preview de markdown no browser (pesquisar mais)
 	use({
@@ -64,8 +66,10 @@ return require("packer").startup(function(use)
 
 	-- Integração com Git
 	use({
-		"lewis6991/gitsigns.nvim",
+    "TimUntersberger/neogit",
 		requires = {
+      "lewis6991/gitsigns.nvim",
+      "sindrets/diffview.nvim",
 			"nvim-lua/plenary.nvim",
 			"tpope/vim-fugitive",
 		},
@@ -83,7 +87,11 @@ return require("packer").startup(function(use)
 	use({ "FrenzyExists/aquarium-vim" })
 	use({ "titanzero/zephyrium" })
 
-	use({ "lervag/vimtex", ft = { "tex" } })
+	use({
+    "lervag/vimtex",
+    "KeitaNakamura/tex-conceal.vim",
+    ft = { "tex" }
+  })
 
 	use({ "brymer-meneses/grammar-guard.nvim" })
 
@@ -162,6 +170,7 @@ return require("packer").startup(function(use)
 			"nvim-telescope/telescope-project.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-github.nvim",
 			"nvim-telescope/telescope-arecibo.nvim",
 			rocks = { "openssl", "lua-http-parser" },
 		},
@@ -184,8 +193,10 @@ return require("packer").startup(function(use)
 
 	-- Mantém o layout da janela ao fechar um buffer
 	use({ "famiu/bufdelete.nvim" })
-  
+
   use({ "lukas-reineke/indent-blankline.nvim" })
+
+  use({ "stevearc/gkeep.nvim" })
 
 
 	if PACKER_BOOTSTRAP then

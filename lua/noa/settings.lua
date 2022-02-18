@@ -47,9 +47,9 @@ for k, v in pairs(options) do
 end
 
 
-settings = {
+local settings = {
   mapleader = ' ',
-  lightspeed_no_default_kaymaps = 1
+  lightspeed_no_default_kaymaps = 1,
 }
 
 for k, v in pairs(settings) do
@@ -66,7 +66,9 @@ vim.cmd([[
 	endif
 
 	if has('win32')
-		let g:python3_host_prog='vim.env.home/AppData/Local/Programs/Python/Python310/python.exe'
+		let g:python3_host_prog='~/AppData/Local/Programs/Python/Python310/python.exe'
 		let g:python_host_prog= 'C:/Python27/python.exe'
 	endif
+
+  let $BROWSER = 'chrome.exe'
 ]])
