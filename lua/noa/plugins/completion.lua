@@ -11,8 +11,6 @@ end
 local super_tab_next = function(fallback)
   if cmp.visible() then
     cmp.select_next_item()
-  elseif luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
   elseif has_words_before() then
     cmp.complete()
   else
@@ -20,15 +18,38 @@ local super_tab_next = function(fallback)
   end
 end
 
+-- local super_tab_next = function(fallback)
+-- 	if cmp.visible() then
+-- 		cmp.select_next_item()
+-- 	elseif luasnip.expand_or_jumpable() then
+-- 		luasnip.expand_or_jump()
+-- 	elseif has_words_before() then
+-- 		cmp.complete()
+-- 	else
+-- 		fallback()
+-- 	end
+-- end
 
 local super_tab_previous = function(fallback)
-  if cmp.visible() then
-    cmp.select_prev_item()
-  elseif luasnip.jumpable(-1) then
-    luasnip.jump(-1)
-  else
-    fallback()
-  end
+	if cmp.visible() then
+		cmp.select_prev_item()
+	else
+		fallback()
+	end
+end
+
+local expand_snippet = function()
+	if luasnip.expand_or_jumpable() then
+		luasnip.expand_or_jump()
+	else
+	end
+end
+
+local snippet_jump_back = function()
+	if luasnip.jumpable(-1) then
+		luasnip.jump(-1)
+	else
+	end
 end
 
 cmp.setup({
@@ -52,18 +73,21 @@ cmp.setup({
 		}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		-- ["<C-R>"] = cmp.mapping.confirm({ select = false }),
+		["<C-g>"] = cmp.mapping.confirm({ select = true }),
+
 		["<Tab>"] = cmp.mapping(super_tab_next, { "i", "s" }),
-		--
 		["<S-Tab>"] = cmp.mapping(super_tab_previous, { "i", "s" }),
+
+		["<C-l>"] = cmp.mapping(expand_snippet, { "i", "s" }),
+		["<C-o>"] = cmp.mapping(snippet_jump_back, { "i", "s" }),
 	},
 
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
+		-- { name = "nvim_lsp" },
+		-- { name = "nvim_lua" },
+		-- { name = "luasnip" },
 		{ name = "omni" },
-		{ name = "luasnip" },
-		{ name = "latex_symbols" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "emoji" },
@@ -75,10 +99,9 @@ cmp.setup({
 			menu = {
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
-        nvim_lua = "[LSP]",
+				nvim_lua = "[LSP]",
 				luasnip = "[Snippet]",
 				omni = "[Omnifunc]",
-				latex_symbols = "[Symbol]",
 				path = "[Path]",
 				emoji = "[Emoji]",
 			},
@@ -116,5 +139,10 @@ cmp.setup.cmdline(":", {
 })
 
 -- Configures auto pairs <CR>
-cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '{' } }) )
-cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "{" } }))
+cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
+
+-- require("luasnip/loaders/from_vscode").load({
+--   paths = { "~/AppData/Local/nvim/" }
+-- })
+

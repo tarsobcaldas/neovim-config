@@ -77,3 +77,32 @@ end
 -- Set options to open require with gf
 vim.opt_local.include = [=[\v<((do|load)file|require)\s*\(?['"]\zs[^'"]+\ze['"]]=]
 vim.opt_local.includeexpr = "v:lua.find_required_path(v:fname)"
+
+
+local cmp = require("cmp")
+cmp.setup.buffer {
+  formatting = {
+    format = function(entry, vim_item)
+        vim_item.menu = ({
+          -- omni = (vim.inspect(vim_item.menu):gsub('%"', "")),
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[LSP]",
+          path = "[Path]",
+          luasnip = "[Snippet]",
+          -- formatting for other sources
+          })[entry.source.name]
+        return vim_item
+      end,
+  },
+
+  sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+		{ name = "luasnip" },
+    -- { name = 'omni' },
+    { name = 'buffer' },
+		{ name = "path" },
+    -- other sources
+  }),
+}

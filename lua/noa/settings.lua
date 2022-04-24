@@ -28,7 +28,7 @@ local options = {
 	relativenumber = true, -- set relative numbered lines
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
-	scrolloff = 8, -- is one of my fav
+	scrolloff = 6, -- is one of my fav
 	sidescrolloff = 8,
 	incsearch = true, -- colors the search matches
 	termguicolors = true, -- uses neovim colorscheme when using terminal
@@ -37,7 +37,7 @@ local options = {
 }
 
 vim.opt.shortmess:append "c"
-vim.cmd "colorscheme zephyrium"
+vim.cmd "colorscheme nightfox"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
 
@@ -50,6 +50,16 @@ end
 local settings = {
   mapleader = ' ',
   lightspeed_no_default_kaymaps = 1,
+  loaded_gzip = 0,
+  loaded_tar = 0,
+  loaded_tarPlugin = 0,
+  loaded_zipPlugin = 0,
+  loaded_2html_plugin = 0,
+  loaded_netrw = 0,
+  loaded_netrwPlugin = 0,
+  loaded_matchit = 0,
+  loaded_matchparen = 0,
+  loaded_spec = 0
 }
 
 for k, v in pairs(settings) do

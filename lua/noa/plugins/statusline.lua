@@ -5,6 +5,7 @@ require'lualine'.setup {
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
     always_divide_mddle = true,
+    theme = "nightfox"
   },
   sections = {
     lualine_a = {'mode'},
@@ -28,7 +29,7 @@ require'lualine'.setup {
 
 require('bufferline').setup {
   options = {
-    numbers = "both", 
+    numbers = "both",
     close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
     right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
     left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"

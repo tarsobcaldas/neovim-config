@@ -1,9 +1,15 @@
 local actions = require('telescope.actions')
 local previewers = require("telescope.previewers")
 
-function nmap(shortcut, command)
-  map('n', shortcut, command)
-end
+-- Dropdown list theme using a builtin theme definitions :
+local center_list = require"telescope.themes".get_dropdown({
+  winblend = 10,
+  width = 0.5,
+  prompt = " ",
+  results_height = 15,
+  previewer = false,
+})
+
 
 require('telescope').setup{
 
@@ -28,7 +34,7 @@ require('telescope').setup{
 		grep_previewer = previewers.vim_buffer_vimgrep.new,
 		qflist_previewer = previewers.vim_buffer_qflist.new,
 	},
-		
+
 	pickers = {
 		buffers = {
 			mappings = {
@@ -50,8 +56,8 @@ require('telescope').setup{
 		file_browser = {
 			theme = "ivy",
 		},
-		project = {
-			require("telescope.themes").get_dropdown {},
+	project = {
+      layout_config = {center_list}
 		}
 	}
 }
@@ -59,6 +65,6 @@ require('telescope').setup{
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension('project')
 require("telescope").load_extension('file_browser')
-require("telescope").load_extension('gkeep')
+-- require("telescope").load_extension('gkeep')
 require("telescope").load_extension('arecibo')
 require("telescope").load_extension('gh')

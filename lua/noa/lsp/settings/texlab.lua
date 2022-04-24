@@ -27,11 +27,11 @@ return {
 					"%l",
 				},
 			},
-			latexFormatter = "latexindent",
-			latexindent = {
-				modifyLineBreaks = true,
-				["local"] = { "C:/Users/noaxp/.indentconfig.yaml" },
-			},
+			latexFormatter = nil,
+			-- latexindent = {
+			-- 	modifyLineBreaks = true,
+			-- 	["local"] = { "C:/Users/noaxp/.indentconfig.yaml" },
+			-- },
 			rootDirectory = { "." },
 		},
 	},

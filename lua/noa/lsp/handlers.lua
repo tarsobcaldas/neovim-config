@@ -85,13 +85,18 @@ local function lsp_keymaps(bufnr)
 	for k, v in pairs(lsp_keys) do
 		vim.api.nvim_buf_set_keymap(bufnr, "n", k, v, opts)
 	end
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 	end
+	if client.name == "texlab" then
+    if vim.bo.filetype == "tex" then
+      client.resolved_capabilities.document_formatting = false
+    end
+	end
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	lsp_keymaps(bufnr)
 	-- lsp_highlight_document(client)
 end

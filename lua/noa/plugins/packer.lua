@@ -30,174 +30,189 @@ if not status_ok then
 end
 
 packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
+	-- display = {
+	-- 	open_fn = function()
+	-- 		return require("packer.util").float({ border = "rounded" })
+	-- 	end,
+	-- },
 })
 
 return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	-- Lazy loading:
-	-- Load on specifc commands
+-- 	-- Lazy loading:
+-- 	-- Load on specifc commands
 	use({ "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } })
-  use({ "tpope/vim-abolish" })
-  use({ "tpope/vim-repeat" })
+   use({ "tpope/vim-abolish" })
+   use({ "tpope/vim-repeat" })
 
-	-- Faz preview de markdown no browser (pesquisar mais)
-	use({
-		"SidOfc/mkdx",
-		requires = { "godlygeek/tabular" },
-	})
+   use({ "tyru/open-browser.vim" })
 
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-		ft = { "markdown" },
-	})
+   use({ "shaggyrogers/vim-gitignore" })
 
-	-- Post-install/update hook with neovim command
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", requires = { "nvim-treesitter/playground" } })
+ 	use({ "godlygeek/tabular", opt = true, cmd = {"Tabularize"}})
 
-	-- Integração com Git
-	use({
-    "TimUntersberger/neogit",
-		requires = {
-      "lewis6991/gitsigns.nvim",
-      "sindrets/diffview.nvim",
-			"nvim-lua/plenary.nvim",
-			"tpope/vim-fugitive",
-		},
-	})
+ 	use({
+ 		"SidOfc/mkdx",
+     {"iamcco/markdown-preview.nvim",
+ 		run = function()
+ 			vim.fn["mkdp#util#install"]()
+ 		end},
+ 		ft = { "markdown" },
+ 	})
 
-	-- colorschemes
-	use({ "EdenEast/nightfox.nvim" })
-	use({ "sainnhe/edge" })
-	use({ "projekt0n/github-nvim-theme" })
-	use({ "tanvirtin/monokai.nvim" })
-	use({ "PHSix/nvim-hybrid" })
-	use({ "sainnhe/everforest" })
-	use({ "NTBBloodbath/doom-one.nvim" })
-	use({ "catppuccin/nvim" })
-	use({ "FrenzyExists/aquarium-vim" })
-	use({ "titanzero/zephyrium" })
+ 	-- Post-install/update hook with neovim command
+ 	use({
+     "nvim-treesitter/nvim-treesitter",
+     run = ":TSUpdate", requires = { "nvim-treesitter/playground" }
+   })
 
-	use({
-    "lervag/vimtex",
-    "KeitaNakamura/tex-conceal.vim",
-    ft = { "tex" }
-  })
+ 	-- Integração com Git
+ 	use({
+     "TimUntersberger/neogit",
+ 		requires = {
+       "lewis6991/gitsigns.nvim",
+       "sindrets/diffview.nvim",
+ 			"nvim-lua/plenary.nvim",
+ 		},
+ 	})
 
-	use({ "brymer-meneses/grammar-guard.nvim" })
+ 	-- colorschemes
+ 	use({
+     "EdenEast/nightfox.nvim",
+     "sainnhe/edge",
+     "projekt0n/github-nvim-theme",
+     "tanvirtin/monokai.nvim",
+     "PHSix/nvim-hybrid",
+     "sainnhe/everforest",
+     "NTBBloodbath/doom-one.nvim",
+     "catppuccin/nvim",
+     "FrenzyExists/aquarium-vim",
+     -- "titanzero/zephyrium",
+     opt = true
+   })
 
-	-- Alterações em volta dos objetos de texto
-	use({ "machakann/vim-sandwich" })
-	use({ "tpope/vim-surround" })
+ 	use({
+     "lervag/vimtex",
+     ft = { "tex" }
+   })
 
-	-- Comentar texto usando gcc
-	use({ "tpope/vim-commentary" })
+   use({
+     "jbyuki/nabla.nvim",
+   })
 
-	-- Barra inferior com informações úteis
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = {
-			{ "akinsho/bufferline.nvim" },
-		},
-	})
+ 	use({ "brymer-meneses/grammar-guard.nvim"})
+   use({ "vigoux/LanguageTool.nvim" })
 
-	use({
-		"kyazdani42/nvim-web-devicons",
-		config = require("nvim-web-devicons").setup({})
-	})
+ 	-- Alterações em volta dos objetos de texto
+ 	use({ "machakann/vim-sandwich" })
+ 	use({ "tpope/vim-surround" })
+   -- use({ "ur4ltz/surround.nvim" })
+   use({ "preservim/vim-textobj-quote" })
 
-	-- Configuração de LSP
-	use({
-		"neovim/nvim-lspconfig",
-		requires = {
-			"williamboman/nvim-lsp-installer",
-			"jose-elias-alvarez/null-ls.nvim",
-			"mfussenegger/nvim-lint",
-			{
-				"folke/lsp-colors.nvim",
-				config = require("lsp-colors").setup(),
-			},
-		},
-	})
+ -- asdfa
+ 	-- Comentar texto usando gcc
+ 	use({
+     "numToStr/Comment.nvim",
+     config = require("Comment").setup({})
+   })
 
-	use({
-		"folke/trouble.nvim",
-		config = require("trouble").setup({}),
-	})
+ 	-- Barra inferior com informações úteis
+ 	use({
+ 		"nvim-lualine/lualine.nvim",
+ 		requires = {
+ 			{ "akinsho/bufferline.nvim" },
+ 		},
+ 	})
 
-	-- Auto completar
-	use({
-		"hrsh7th/nvim-cmp",
-		requires = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-omni",
-			"hrsh7th/cmp-emoji",
-			{ "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
-			"petertriho/cmp-git",
-			{ "kdheepak/cmp-latex-symbols", ft = { "tex" } },
-			"lukas-reineke/cmp-under-comparator",
-			"onsails/lspkind-nvim",
-		},
-	})
+ 	use({
+ 		"kyazdani42/nvim-web-devicons",
+ 		config = require("nvim-web-devicons").setup({})
+ 	})
 
-	use({
-		"L3MON4D3/LuaSnip",
-		requires = {
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
-		},
-	})
+ 	-- Configuração de LSP
+ 	use({
+ 		"neovim/nvim-lspconfig",
+ 		requires = {
+ 			"williamboman/nvim-lsp-installer",
+ 			"jose-elias-alvarez/null-ls.nvim",
+ 			"mfussenegger/nvim-lint",
+       "brymer-meneses/grammar-guard.nvim",
+ 			{
+ 				"folke/lsp-colors.nvim",
+ 				config = require("lsp-colors").setup(),
+ 			},
+ 		},
+ 	})
 
-	-- Fuzzy finding integrado ao Neovim
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-fzf-native.nvim",
-			run = "make",
-			"nvim-telescope/telescope-project.nvim",
-			"nvim-telescope/telescope-file-browser.nvim",
-			"nvim-telescope/telescope-ui-select.nvim",
-      "nvim-telescope/telescope-github.nvim",
-			"nvim-telescope/telescope-arecibo.nvim",
-			rocks = { "openssl", "lua-http-parser" },
-		},
-	})
+ 	use({
+ 		"folke/trouble.nvim",
+ 		config = require("trouble").setup({}),
+ 	})
 
-	use({ "Shatur/neovim-session-manager" })
+ 	-- Auto completar
+ 	use({
+ 		"hrsh7th/nvim-cmp",
+ 		requires = {
+ 			"hrsh7th/cmp-nvim-lsp",
+ 			"hrsh7th/cmp-buffer",
+ 			"hrsh7th/cmp-path",
+ 			"hrsh7th/cmp-cmdline",
+ 			"hrsh7th/cmp-omni",
+ 			"hrsh7th/cmp-emoji",
+ 			{ "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
+ 			"petertriho/cmp-git",
+ 			{ "kdheepak/cmp-latex-symbols", ft = { "tex" } },
+ 			"lukas-reineke/cmp-under-comparator",
+ 			"onsails/lspkind-nvim",
+ 		},
+ 	})
 
-	-- Árvore de desfazer
-	use({ "mbbill/undotree" })
+ 	use({
+ 		"L3MON4D3/LuaSnip",
+ 		requires = {
+ 			"saadparwaiz1/cmp_luasnip",
+ 			"rafamadriz/friendly-snippets",
+ 		},
+ 	})
 
-	-- Terminal de fácil acesso
-	use({ "akinsho/toggleterm.nvim" })
+ 	-- Fuzzy finding integrado ao Neovim
+ 	use({
+ 		"nvim-telescope/telescope.nvim",
+ 		requires = {
+ 			"nvim-lua/plenary.nvim",
+ 			"nvim-telescope/telescope-fzf-native.nvim",
+ 			run = "make",
+ 			"nvim-telescope/telescope-project.nvim",
+ 			"nvim-telescope/telescope-file-browser.nvim",
+ 			"nvim-telescope/telescope-ui-select.nvim",
+       "nvim-telescope/telescope-github.nvim",
+ 			"nvim-telescope/telescope-arecibo.nvim",
+ 			rocks = { "openssl", "lua-http-parser" },
+ 		},
+ 	})
 
-	-- Liga relativenumber somente quando faz sentido
-	use({ "jeffkreeftmeijer/vim-numbertoggle" })
+ 	use({ "Shatur/neovim-session-manager" })
 
-	use({ "windwp/nvim-autopairs" })
+ 	-- Árvore de desfazer
+ 	use({ "mbbill/undotree" })
 
-	use({ "ggandor/lightspeed.nvim" })
+ 	-- Terminal de fácil acesso
+ 	use({ "akinsho/toggleterm.nvim" })
 
-	-- Mantém o layout da janela ao fechar um buffer
-	use({ "famiu/bufdelete.nvim" })
+ 	-- Liga relativenumber somente quando faz sentido
+ 	use({ "jeffkreeftmeijer/vim-numbertoggle" })
 
-  use({ "lukas-reineke/indent-blankline.nvim" })
+ 	use({ "windwp/nvim-autopairs" })
 
-  use({ "stevearc/gkeep.nvim" })
+ 	use({ "ggandor/lightspeed.nvim" })
 
+ 	-- Mantém o layout da janela ao fechar um buffer
+ 	use({ "famiu/bufdelete.nvim" })
+
+  -- Cria guia de identação (muito pesado)
+  -- use({ "lukas-reineke/indent-blankline.nvim" })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

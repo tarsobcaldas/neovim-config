@@ -23,7 +23,8 @@ local cond = require('nvim-autopairs.conds')
 
 npairs.add_rules({
 	Rule("(", ")", {"tex", "latex"})
-	:with_pair(cond.not_before_text("\\"))
+    :with_pair(cond.not_before_text("\\"))
+    :with_pair(cond.not_before_text("@"))
 })
 
 npairs.add_rules({
@@ -42,6 +43,10 @@ npairs.add_rules({
 	Rule("$$", "$$", {"tex", "latex", "plaintex"})
 })
 
+npairs.add_rules({
+	Rule("\\left(", "\\right)", {"tex", "latex"})
+	:with_pair(cond.not_before_text("\\"))
+})
 -- npairs.add_rules({
 -- 	Rule('"', '"', {"tex", "latex", "plaintex"})
 -- 	:with_pair(cond.not_after_regex_check("\\"))
@@ -52,7 +57,7 @@ npairs.add_rules({
 -- 	:with_pair(cond.not_after_regex_check("\\"))
 -- })
 
-  
+
     -- -- don't add a pair if the next character is %
     -- :with_pair(cond.not_after_regex_check("%%"))
     -- -- don't add a pair if  the previous character is xxx

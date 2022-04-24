@@ -3,11 +3,6 @@ if not status_ok then
 	return
 end
 
--- -- local servers = {
--- --   "texlab",
--- --   "sumneko_lua"
--- -- }
-
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
@@ -26,11 +21,10 @@ lsp_installer.on_server_ready(function(server)
 	 	opts = vim.tbl_deep_extend("force", texlab, opts)
 	 end
 
-
-	 -- if server.name == "powershell_es" then
-	 -- 	local texlab = require("noa.lsp.settings.powershell_es")
-	 -- 	opts = vim.tbl_deep_extend("force", powershell_es, opts)
-	 -- end
+	 if server.name == "ltex" then
+	 	local ltex = require("noa.lsp.settings.ltex")
+	 	opts = vim.tbl_deep_extend("force", ltex, opts)
+	 end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

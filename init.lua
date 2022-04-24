@@ -1,1 +1,2 @@
 require("noa")
+require("ltex")

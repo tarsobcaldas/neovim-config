@@ -11,22 +11,28 @@ local normal = {
 	-- Undo tree
 	["<F5>"] = "<cmd>UndotreeToggle<cr>",
 
-	-- Use cd to change to current folder
-	["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
+  -- open URL without netrw
+  ["gx"] = "<Plug>(openbrowser-smart-search)",
 
 	-- move line above or below
-	["[e"] = "<cmd>execute 'move -1-'. v:count1<cr>",
 	["]e"] = "<cmd>execute 'move +'. v:count1<cr>",
-
-	-- add empty lin"es"
-	["[<space>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
-	["]<space>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
-
-	["<Leader>xx"] = "<cmd>Bdelete<cr>",
-	["<Leader>xf"] = "<cmd>Bdelete!<cr>",
+	["[e"] = "<cmd>execute 'move -1-'. v:count1<cr>",
 
 	["]b"] = "<cmd>BufferLineCycleNext<cr>",
 	["[b"] = "<cmd>BufferLineCyclePrev<cr>",
+  -- Gitsigns
+  ["]g"] = ":Gitsigns next_hunk<cr>",
+  ["[g"] = ":Gitsigns prev_hunk<cr>",
+
+	-- add empty lines
+	["[<space>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
+	["]<space>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
+
+	-- Use cd to change to current folder
+	["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
+
+	["<Leader>xx"] = "<cmd>Bdelete<cr>",
+	["<Leader>xf"] = "<cmd>Bdelete!<cr>",
 
 	["<space><"] = "<cmd>BufferLineMovePrev<cr>",
 	["<space>>"] = "<cmd>BufferLineMoveNext<cr>",
@@ -53,27 +59,37 @@ local normal = {
 	["<leader>tr"] = "<cmd>Trouble lsp_references<cr>",
 
 	-- Telescope
+	["<leader>fp"]  = "<cmd>Telescope project<cr>",
+	["<leader>fs"]  = "<cmd>Telescope file_browser<cr>",
 	["<leader>ff"]  = "<cmd>lua require('telescope.builtin').find_files()<cr>",
 	["<leader>fg"]  = "<cmd>lua require('telescope.builtin').live_grep()<cr>",
 	["<leader>fb"]  = "<cmd>lua require('telescope.builtin').buffers()<cr>",
-	["<leader>fs"]  = "<cmd>Telescope file_browser<cr>",
-	["<leader>fp"]  = "<cmd>Telescope project<cr>",
 	["<leader>fh"]  = "<cmd>lua require('telescope.builtin').help_tags()<cr>",
 	["<leader>fk"]  = "<cmd>lua require('telescope.builtin').keymaps()<cr>",
 	["<leader>fc"]  = "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
 	["<leader>fo"]  = "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
 	["<leader>fq"]  = "<cmd>lua require('telescope.builtin').quickfix()<cr>",
 	["<leader>fm"]  = "<cmd>lua require('telescope.builtin').marks()<cr>",
-	["<leader>fw"]  = "<cmd>lua require('telescope').extensions.arecibo.websearch()<cr>",
 	["<leader>fre"] = "<cmd>lua require('telescope.builtin').resume()<cr>",
 	["<leader>frg"] = "<cmd>lua require('telescope.builtin').registers()<cr>",
+	-- ["<leader>fn"]  = "<cmd>Telescope gkeep<cr>",
+	-- ["<leader>fw"]  = "<cmd>lua require('telescope').extensions.arecibo.websearch()<cr>",
 
 	-- SessionManager
 	["<leader>sl"] = ":SessionManager load_session<cr>",
 	["<leader>sd"] = ":SessionManager delete_session<cr>",
 
-  -- Gkeep
-  ["gk"] = ":GkeepCheck<cr>",
+  -- -- Gkeep
+  -- ["gk"] = ":GkeepCheck<cr>",
+  -- ["<leader>gk"] = ":GkeepToggle<cr>",
+
+  -- Diffview
+  ["<leader>do"] = ":DiffviewOpen<cr>",
+  ["<leader>dc"] = ":DiffviewClose<cr>",
+
+  -- Neogit
+  ["<leader>ng"] = ":Neogit<cr>",
+  ["<leader>ep"] = "<cmd>lua require('nabla').popup()<cr>"
 }
 
 local insert = {
@@ -95,6 +111,10 @@ local terminal = {
 
 local visual = {
 	-- Visual mode:
+  
+  -- open URL without netrw
+  ["gx"] = "<Plug>(openbrowser-smart-search)",
+
 	["<M-h>"] = "<Esc><c-w>h",
 	["<M-j>"] = "<Esc><c-w>j",
 	["<M-k>"] = "<Esc><c-w>k",
