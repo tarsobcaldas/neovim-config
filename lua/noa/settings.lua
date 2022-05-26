@@ -25,10 +25,10 @@ local options = {
 	shiftwidth = 2, -- the number of spaces inserted for each indentation
 	tabstop = 2, -- insert 2 spaces for a tab
 	number = true, -- set numbered lines
-	relativenumber = true, -- set relative numbered lines
+	relativenumber = false, -- set relative numbered lines
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
-	scrolloff = 6, -- is one of my fav
+	scrolloff = 4, -- is one of my fav
 	sidescrolloff = 8,
 	incsearch = true, -- colors the search matches
 	termguicolors = true, -- uses neovim colorscheme when using terminal
@@ -41,7 +41,7 @@ vim.opt.shortmess:append "c"
 vim.cmd "colorscheme nightfox"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
-vim.cmd "syntax off"
+-- vim.cmd "syntax off"
 
 
 for k, v in pairs(options) do

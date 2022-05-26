@@ -7,6 +7,10 @@ local Path = require('plenary.path')
 --   autosave_ignore_not_normal = true, -- Plugin will not save a session when no writable and listed buffers are opened.
 -- })
 
-require('neogit').setup()
+require('neogit').setup({
+  integrations = {
+    diffview = true
+  }
+})
 require('gitsigns').setup()
 require("diffview").setup()
