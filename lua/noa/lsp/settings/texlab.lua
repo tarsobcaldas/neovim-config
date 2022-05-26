@@ -1,22 +1,26 @@
-return {
-	on_attach = on_attach,
-	capabilities = capabilities,
+local	on_attach = require("noa.lsp.handlers").on_attach
+local	capabilities = require("noa.lsp.handlers").capabilities
+
+require("lspconfig").texlab.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
 	init_options = { documentFormatting = true },
-	cmd = { "texlab" },
-	filetypes = { "tex", "bib", "cls", "sty", "def", "clo" },
+	-- filetypes = { "tex", "bib", "cls", "sty", "def", "clo" },
 	settings = {
 		texlab = {
 			build = {
-				args = { "%f" },
-				executable = "arara",
+				args = { "-interaction=nonstopmode", "-synctex=1", "-shell-escape", "%f" },
+				executable = "latexmk",
 				forwardSearchAfter = true,
-				onSave = false,
+				onSave = true,
 			},
-			chktex = {
-				onEdit = true,
-				onOpenAndSave = true,
-			},
-			diagnosticsDelay = 100,
+      chktex = {
+        onOpenAndSave = true,
+        onEdit = true
+      },
+      auxDirectory = { "aux" },
+      formatterLineLength = {72},
+      latexFormatter = {"latexindent"},
 			forwardSearch = {
 				executable = { "SumatraPDF" },
 				args = {
@@ -27,12 +31,6 @@ return {
 					"%l",
 				},
 			},
-			latexFormatter = nil,
-			-- latexindent = {
-			-- 	modifyLineBreaks = true,
-			-- 	["local"] = { "C:/Users/noaxp/.indentconfig.yaml" },
-			-- },
-			rootDirectory = { "." },
 		},
 	},
 }

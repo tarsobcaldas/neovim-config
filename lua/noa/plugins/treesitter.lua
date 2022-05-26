@@ -1,6 +1,9 @@
 require("nvim-treesitter.install").compilers = { "clang" }
 
 require("nvim-treesitter.configs").setup({
+  ensure_installed = {
+    "latex", "bibtex", "markdown", "c", "lua", "vim", "cpp", "perl", "yaml", "help", "todotxt", "html", "json", "make", "python", "regex"
+  },
 	-- ignore_install = { "javascript" },
 	highlight = {
 		enable = true,
@@ -28,10 +31,10 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-vim.cmd([[
-		augroup vimrc-sync-fromstart
-		    autocmd!
-				autocmd VimEnter * syntax sync maxlines=400
-				autocmd VimEnter * syntax sync minlines=200
-		augroup END
-]])
+-- vim.cmd([[
+-- 		augroup vimrc-sync-fromstart
+-- 		    autocmd!
+-- 				autocmd VimEnter * syntax sync maxlines=400
+-- 				autocmd VimEnter * syntax sync minlines=200
+-- 		augroup END
+-- ]])

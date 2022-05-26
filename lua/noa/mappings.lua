@@ -1,22 +1,23 @@
-function map(mode, shortcut, command, options)
+local opts = {noremap = true, silent = true}
+
+local function map(mode, shortcut, command, options)
   vim.api.nvim_set_keymap(mode, shortcut, command, options)
 end
 
-local opts = {noremap = true, silent = true}
-function noremap(mode, shortcut, command)
+local function noremap(mode, shortcut, command)
   map(mode, shortcut, command, opts)
 end
 
 local normal = {
+  -- Clever F
+  [";"] = "<Plug>(clever-f-repeat-forward)",
+  [","] = "<Plug>(clever-f-repeat-back)",
+
 	-- Undo tree
 	["<F5>"] = "<cmd>UndotreeToggle<cr>",
 
   -- open URL without netrw
   ["gx"] = "<Plug>(openbrowser-smart-search)",
-
-	-- move line above or below
-	["]e"] = "<cmd>execute 'move +'. v:count1<cr>",
-	["[e"] = "<cmd>execute 'move -1-'. v:count1<cr>",
 
 	["]b"] = "<cmd>BufferLineCycleNext<cr>",
 	["[b"] = "<cmd>BufferLineCyclePrev<cr>",
@@ -37,11 +38,17 @@ local normal = {
 	["<space><"] = "<cmd>BufferLineMovePrev<cr>",
 	["<space>>"] = "<cmd>BufferLineMoveNext<cr>",
 
-	-- Normal mode:
+	-- Move through windows
 	["<M-h>"] = "<c-w>h",
 	["<M-j>"] = "<c-w>j",
 	["<M-k>"] = "<c-w>k",
 	["<M-l>"] = "<c-w>l",
+
+  -- Move.nvim
+  ["<C-Up>"] = ":MoveLine(-1)<CR>",
+  ["<C-Down>"] = ":MoveLine(1)<CR>",
+  ["<C-Left>"] = ":MoveHChar(-1)<CR>",
+  ["<C-Right>"] = ":MoveHChar(1)<CR>",
 
 	["<leader>mt"] = "<Plug>MarkdownPreviewToggle",
 
@@ -72,16 +79,10 @@ local normal = {
 	["<leader>fm"]  = "<cmd>lua require('telescope.builtin').marks()<cr>",
 	["<leader>fre"] = "<cmd>lua require('telescope.builtin').resume()<cr>",
 	["<leader>frg"] = "<cmd>lua require('telescope.builtin').registers()<cr>",
-	-- ["<leader>fn"]  = "<cmd>Telescope gkeep<cr>",
-	-- ["<leader>fw"]  = "<cmd>lua require('telescope').extensions.arecibo.websearch()<cr>",
 
 	-- SessionManager
 	["<leader>sl"] = ":SessionManager load_session<cr>",
 	["<leader>sd"] = ":SessionManager delete_session<cr>",
-
-  -- -- Gkeep
-  -- ["gk"] = ":GkeepCheck<cr>",
-  -- ["<leader>gk"] = ":GkeepToggle<cr>",
 
   -- Diffview
   ["<leader>do"] = ":DiffviewOpen<cr>",
@@ -89,7 +90,7 @@ local normal = {
 
   -- Neogit
   ["<leader>ng"] = ":Neogit<cr>",
-  ["<leader>ep"] = "<cmd>lua require('nabla').popup()<cr>"
+  ["<leader>nb"] = "<cmd>lua require('nabla').popup()<cr>"
 }
 
 local insert = {
@@ -110,8 +111,17 @@ local terminal = {
 }
 
 local visual = {
-	-- Visual mode:
-  
+  -- Leap
+  ["x"] = "<Plug>(leap-forward-x)",
+  ["X"] = "<Plug>(leap-backward-x)",
+
+  -- -- Hop
+  -- ["<leader>e"] = "<cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>",
+
+  -- Clever F
+  [";"] = "<Plug>(clever-f-repeat-forward)",
+  [","] = "<Plug>(clever-f-repeat-back)",
+
   -- open URL without netrw
   ["gx"] = "<Plug>(openbrowser-smart-search)",
 
@@ -119,6 +129,12 @@ local visual = {
 	["<M-j>"] = "<Esc><c-w>j",
 	["<M-k>"] = "<Esc><c-w>k",
 	["<M-l>"] = "<Esc><c-w>l",
+
+  -- Move.nvim
+  ["<C-Up>"] = ":MoveBlock(-1)<CR>",
+  ["<C-Down>"] = ":MoveBlock(1)<CR>",
+  ["<C-Left>"] = ":MoveHBlock(-1)<CR>",
+  ["<C-Right>"] = ":MoveHBlock(1)<CR>",
 }
 
 local command = {}
@@ -157,17 +173,3 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 ]])
-
---lightspeed
-local lightspeed = {
-  ["t"]  = "<Plug>Lightspeed_s",
-  ["T"]  = "<Plug>Lightspeed_S",
-}
-
-local noopts = {}
-for k,v in pairs(lightspeed) do
-  map("n", k, v, noopts)
-end
-
-vim.cmd "silent! unmap s"
-vim.cmd "silent! unmap S"

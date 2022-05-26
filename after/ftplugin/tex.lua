@@ -74,6 +74,7 @@ vim.cmd([[
           \}
 
 	let g:vimtex_quickfix_ignore_filters = []
+  let g:vimtex_syntax_enabled=0
 
 	let g:vimtex_quickfix_mode=0
 	let g:vimtex_view_automatic=1

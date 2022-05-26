@@ -1,6 +1,6 @@
 local options = {
 	backup = false, -- creates a backup file
-	cmdheight = 2, -- more space in the neovim command line for displaying messages
+	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	completeopt = { "menu", "menuone", "noselect" }, -- mostly just for cmp
 	conceallevel = 3, -- so that `` is visible in markdown files
 	fileencoding = "utf-8", -- the encoding written to a file
@@ -34,12 +34,14 @@ local options = {
 	termguicolors = true, -- uses neovim colorscheme when using terminal
   keymap = "accents",
   hidden = true,
+  laststatus = 3,
 }
 
 vim.opt.shortmess:append "c"
 vim.cmd "colorscheme nightfox"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
+vim.cmd "syntax off"
 
 
 for k, v in pairs(options) do
@@ -59,7 +61,8 @@ local settings = {
   loaded_netrwPlugin = 0,
   loaded_matchit = 0,
   loaded_matchparen = 0,
-  loaded_spec = 0
+  loaded_spec = 0,
+  clever_f_highlight_timeout_ms = 3000
 }
 
 for k, v in pairs(settings) do

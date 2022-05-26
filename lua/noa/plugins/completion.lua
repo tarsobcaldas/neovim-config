@@ -76,8 +76,8 @@ cmp.setup({
 		-- ["<C-R>"] = cmp.mapping.confirm({ select = false }),
 		["<C-g>"] = cmp.mapping.confirm({ select = true }),
 
-		["<Tab>"] = cmp.mapping(super_tab_next, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(super_tab_previous, { "i", "s" }),
+		["<Tab>"] = cmp.mapping(super_tab_next, { "i", "s", "c"}),
+		["<S-Tab>"] = cmp.mapping(super_tab_previous, { "i", "s", "c"}),
 
 		["<C-l>"] = cmp.mapping(expand_snippet, { "i", "s" }),
 		["<C-o>"] = cmp.mapping(snippet_jump_back, { "i", "s" }),
@@ -87,6 +87,7 @@ cmp.setup({
 		-- { name = "nvim_lsp" },
 		-- { name = "nvim_lua" },
 		-- { name = "luasnip" },
+    --
 		{ name = "omni" },
 		{ name = "buffer" },
 		{ name = "path" },
