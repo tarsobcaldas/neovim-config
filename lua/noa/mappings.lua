@@ -13,9 +13,6 @@ local normal = {
   [";"] = "<Plug>(clever-f-repeat-forward)",
   [","] = "<Plug>(clever-f-repeat-back)",
 
-	-- Undo tree
-	["<F5>"] = "<cmd>UndotreeToggle<cr>",
-
   -- open URL without netrw
   ["gx"] = "<Plug>(openbrowser-smart-search)",
 
@@ -29,11 +26,14 @@ local normal = {
 	["[<space>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
 	["]<space>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
 
+	["<leader>ut"] = "<cmd>UndotreeToggle<cr>",
+
 	-- Use cd to change to current folder
 	["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
 
 	["<Leader>xx"] = "<cmd>Bdelete<cr>",
 	["<Leader>xf"] = "<cmd>Bdelete!<cr>",
+  ["<leader>xa"] = "<cmd>BufOnly<cr>",
 
 	["<space><"] = "<cmd>BufferLineMovePrev<cr>",
 	["<space>>"] = "<cmd>BufferLineMoveNext<cr>",
@@ -76,9 +76,10 @@ local normal = {
 	["<leader>fc"]  = "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
 	["<leader>fo"]  = "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
 	["<leader>fq"]  = "<cmd>lua require('telescope.builtin').quickfix()<cr>",
-	["<leader>fm"]  = "<cmd>lua require('telescope.builtin').marks()<cr>",
 	["<leader>fre"] = "<cmd>lua require('telescope.builtin').resume()<cr>",
 	["<leader>frg"] = "<cmd>lua require('telescope.builtin').registers()<cr>",
+	["<leader>fmk"] = "<cmd>lua require('telescope.builtin').marks()<cr>",
+	["<leader>fmd"] = "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>",
 
 	-- SessionManager
 	["<leader>sl"] = ":SessionManager load_session<cr>",
@@ -90,7 +91,7 @@ local normal = {
 
   -- Neogit
   ["<leader>ng"] = ":Neogit<cr>",
-  ["<leader>nb"] = "<cmd>lua require('nabla').popup()<cr>"
+  ["<leader>nb"] = "<cmd>lua require('nabla').popup()<cr>",
 }
 
 local insert = {
@@ -115,9 +116,6 @@ local visual = {
   ["x"] = "<Plug>(leap-forward-x)",
   ["X"] = "<Plug>(leap-backward-x)",
 
-  -- -- Hop
-  -- ["<leader>e"] = "<cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>",
-
   -- Clever F
   [";"] = "<Plug>(clever-f-repeat-forward)",
   [","] = "<Plug>(clever-f-repeat-back)",
@@ -135,6 +133,7 @@ local visual = {
   ["<C-Down>"] = ":MoveBlock(1)<CR>",
   ["<C-Left>"] = ":MoveHBlock(-1)<CR>",
   ["<C-Right>"] = ":MoveHBlock(1)<CR>",
+
 }
 
 local command = {}
@@ -173,3 +172,19 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 ]])
+
+
+-- Knap
+local knap_mappings = {
+  ["<leader>kp"] = function() require("knap").process_once() end,
+  ["<leader>kc"] = function() require("knap").close_viewer() end,
+  ["<leader>kj"] = function() require("knap").forward_jump() end,
+  ["<leader>kk"] = function() require("knap").toggle_autopreviewing() end,
+}
+local kmap = vim.keymap.set
+
+for k, v in pairs(knap_mappings) do
+  kmap("n", k, v)
+  kmap("i", k, v)
+  kmap("v", k, v)
+end

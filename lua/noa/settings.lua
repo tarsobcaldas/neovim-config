@@ -38,16 +38,31 @@ local options = {
 }
 
 vim.opt.shortmess:append "c"
-vim.cmd "colorscheme nightfox"
+vim.cmd "colorscheme duskfox"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
 -- vim.cmd "syntax off"
 
 
+-- local knap_settings = {
+--   texoutputext = "pdf",
+--   textopdf = "lualatex -synctex=1 -halt-on-error -interaction=batchmode -shell-escape %docroot%",
+--   textopdfviewerlaung = "sioyek %outputfile%"
+-- }
+
+local arara_settings = {
+  options = '--verbose',
+}
+
+local latexmk_settings = {
+  executable = 'latexmk',
+  options = "-file-line-error -synctex=1 -interaction=nonstopmode"
+}
+
+
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
-
 
 local settings = {
   mapleader = ' ',
@@ -62,7 +77,18 @@ local settings = {
   loaded_matchit = 0,
   loaded_matchparen = 0,
   loaded_spec = 0,
-  clever_f_highlight_timeout_ms = 3000
+  clever_f_highlight_timeout_ms = 3000,
+  material_style = "darker",
+	tex_flavor='latex',
+	vimtex_compiler_method = 'latexmk',
+	vimtex_compiler_engine = 'lualatex',
+	vimtex_quickfix_ignore_filters = "",
+  vimtex_syntax_enabled=0,
+	vimtex_quickfix_mode=0,
+  vimtex_view_use_temp_files=1,
+	vimtex_view_method = 'zathura',
+  vimtex_compiler_latexmk = latexmk_settings,
+  vimtex_compiler_arara = arara_settings,
 }
 
 for k, v in pairs(settings) do
@@ -84,4 +110,22 @@ vim.cmd([[
 	endif
 
   let $BROWSER = 'chrome.exe'
+]])
+
+
+vim.cmd([[
+
+	let g:vimtex_compiler_arara = {
+		\ 'options' : ['--verbose'],
+		\}			
+
+  let g:vimtex_compiler_latexmk = { 
+          \ 'executable' : 'latexmk',
+          \ 'options' : [ 
+          \   '-lualatex',
+          \   '-file-line-error',
+          \   '-synctex=1',
+          \   '-interaction=nonstopmode',
+          \ ],
+          \}
 ]])

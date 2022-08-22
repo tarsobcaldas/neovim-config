@@ -1,5 +1,5 @@
 require("toggleterm").setup{
-  open_mapping = [[<m-`>]],
+  open_mapping = [[<m-w>]],
   shade_terminals = false,
 }
 

@@ -76,9 +76,10 @@ end
 M.on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   lsp_keymaps(bufnr)
+      formatting_callback(client, bufnr)
   if client.name ~= "texlab" then
     if vim.bo.filetype == "tex" then
-      formatting_callback(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
     end
   end
 end

@@ -44,15 +44,18 @@ require('telescope').setup{
 		file_browser = {
 			theme = "ivy",
 		},
-	project = {
-      layout_config = {center_list}
-		}
+    media_files = {
+      find_cmd = "rg"
+    },
+    project = {
+        layout_config = {center_list}
+      }
 	}
 }
 
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension('project')
 require("telescope").load_extension('file_browser')
--- require("telescope").load_extension('gkeep')
+require('telescope').load_extension('media_files')
 require("telescope").load_extension('arecibo')
 require("telescope").load_extension('gh')

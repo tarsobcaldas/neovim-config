@@ -86,12 +86,12 @@ cmp.setup({
 	sources = cmp.config.sources({
 		-- { name = "nvim_lsp" },
 		-- { name = "nvim_lua" },
-		-- { name = "luasnip" },
-    --
+		{ name = "luasnip" },
 		{ name = "omni" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "emoji" },
+    { name = "org" }
 	}),
 
 	formatting = {
@@ -104,7 +104,6 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				omni = "[Omnifunc]",
 				path = "[Path]",
-				emoji = "[Emoji]",
 			},
 		}),
 	},
@@ -139,9 +138,9 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
--- Configures auto pairs <CR>
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "{" } }))
-cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
+-- -- Configures auto pairs <CR>
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "{" } }))
+-- cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 
 -- require("luasnip/loaders/from_vscode").load({
 --   paths = { "~/AppData/Local/nvim/" }

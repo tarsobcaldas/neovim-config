@@ -91,19 +91,16 @@ return require("packer").startup(function(use)
     "FrenzyExists/aquarium-vim",
     "ishan9299/nvim-solarized-lua",
     "titanzero/zephyrium",
+    "rafamadriz/neon",
+    "marko-cerovac/material.nvim",
+    "Th3Whit3Wolf/one-nvim",
     opt = true
   })
 
   use({ "lervag/vimtex" })
-
-  -- use({
-  --   'f3fora/nvim-texlabconfig',
-  --   config = require('texlabconfig').setup({}),
-  -- })
-
-  use({
-    "jbyuki/nabla.nvim",
-  })
+  use({ 'f3fora/nvim-texlabconfig' })
+  use({ "jbyuki/nabla.nvim" })
+  -- use({ "frabjous/knap" })
 
   use({ "brymer-meneses/grammar-guard.nvim" })
   use({ "vigoux/LanguageTool.nvim" })
@@ -181,6 +178,10 @@ return require("packer").startup(function(use)
     },
   })
 
+  use({
+    "nvim-lua/popup.nvim",
+  })
+
   -- Fuzzy finding integrado ao Neovim
   use({
     "nvim-telescope/telescope.nvim",
@@ -193,6 +194,7 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-github.nvim",
       "nvim-telescope/telescope-arecibo.nvim",
+      "nvim-telescope/telescope-media-files.nvim",
       rocks = { "openssl", "lua-http-parser" },
     },
   })
@@ -201,16 +203,10 @@ return require("packer").startup(function(use)
   use({
     "goolord/alpha-nvim",
     requires = { "Shatur/neovim-session-manager" },
-    config = {
-      require("alpha").setup(require 'alpha.themes.dashboard'.config),
-      require("session_manager").setup({
-        autoload_mode = require('session_manager.config').AutoloadMode.Disabled
-      })
-    }
   })
 
   -- Árvore de desfazer
-  use({ "mbbill/undotree" })
+  use({ "jiaoshijie/undotree" })
 
   -- Terminal de fácil acesso
   use({ "akinsho/toggleterm.nvim" })
@@ -229,10 +225,19 @@ return require("packer").startup(function(use)
   -- Mantém o layout da janela ao fechar um buffer
   use({ "famiu/bufdelete.nvim" })
 
+  use({ "numToStr/BufOnly.nvim" })
+
   use ({ "fedepujol/move.nvim" })
+
+  use ({ "nvim-orgmode/orgmode" })
 
   -- Cria guia de identação (muito pesado)
   -- use({ "lukas-reineke/indent-blankline.nvim" })
+
+  use ({
+    "lewis6991/impatient.nvim",
+    requires = "tami5/sqlite.lua"
+  })
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
