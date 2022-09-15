@@ -94,6 +94,7 @@ return require("packer").startup(function(use)
     "rafamadriz/neon",
     "marko-cerovac/material.nvim",
     "Th3Whit3Wolf/one-nvim",
+    "ray-x/starry.nvim",
     opt = true
   })
 

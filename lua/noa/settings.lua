@@ -85,7 +85,7 @@ local settings = {
 	vimtex_quickfix_ignore_filters = "",
   vimtex_syntax_enabled=0,
 	vimtex_quickfix_mode=0,
-  vimtex_view_use_temp_files=1,
+  -- vimtex_view_use_temp_files=1,
 	vimtex_view_method = 'zathura',
   vimtex_compiler_latexmk = latexmk_settings,
   vimtex_compiler_arara = arara_settings,
@@ -114,7 +114,6 @@ vim.cmd([[
 
 
 vim.cmd([[
-
 	let g:vimtex_compiler_arara = {
 		\ 'options' : ['--verbose'],
 		\}			

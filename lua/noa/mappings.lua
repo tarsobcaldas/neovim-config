@@ -23,20 +23,20 @@ local normal = {
   ["[g"] = ":Gitsigns prev_hunk<cr>",
 
 	-- add empty lines
-	["[<space>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
-	["]<space>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
+	["[<leader>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
+	["]<leader>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
 
-	["<leader>ut"] = "<cmd>UndotreeToggle<cr>",
+	["<leader>ut"] = "<cmd>lua require('undotree').toggle()<cr>",
 
 	-- Use cd to change to current folder
 	["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
 
-	["<Leader>xx"] = "<cmd>Bdelete<cr>",
-	["<Leader>xf"] = "<cmd>Bdelete!<cr>",
+	["<leader>xx"] = "<cmd>Bdelete<cr>",
+	["<leader>xf"] = "<cmd>Bdelete!<cr>",
   ["<leader>xa"] = "<cmd>BufOnly<cr>",
 
-	["<space><"] = "<cmd>BufferLineMovePrev<cr>",
-	["<space>>"] = "<cmd>BufferLineMoveNext<cr>",
+  ["<leader><"] = "<cmd>BufferLineMovePrev<cr>",
+  ["<leader>>"] = "<cmd>BufferLineMoveNext<cr>",
 
 	-- Move through windows
 	["<M-h>"] = "<c-w>h",
