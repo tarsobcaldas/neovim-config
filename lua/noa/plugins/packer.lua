@@ -49,8 +49,6 @@ return require("packer").startup(function(use)
 
   use({ "tyru/open-browser.vim" })
 
-  use({ "shaggyrogers/vim-gitignore" })
-
   use({ "godlygeek/tabular", opt = true, cmd = { "Tabularize" } })
 
   use({
@@ -112,46 +110,16 @@ return require("packer").startup(function(use)
   -- use({ "ur4ltz/surround.nvim" })
   use({ "preservim/vim-textobj-quote" })
 
-  -- Comentar texto usando gcc
-  use({
-    "numToStr/Comment.nvim",
-    config = require("Comment").setup({})
-  })
-
   -- Barra inferior com informações úteis
   use({
     "nvim-lualine/lualine.nvim",
     requires = {
       { "akinsho/bufferline.nvim" },
+      { "arkav/lualine-lsp-progress" }
     },
   })
 
-  use({
-    "kyazdani42/nvim-web-devicons",
-    config = require("nvim-web-devicons").setup({})
-  })
-
-  -- Configuração de LSP
-  use({
-    "neovim/nvim-lspconfig",
-    requires = {
-      "williamboman/nvim-lsp-installer",
-      "jose-elias-alvarez/null-ls.nvim",
-      "mfussenegger/nvim-lint",
-      "brymer-meneses/grammar-guard.nvim",
-      {
-        "folke/lsp-colors.nvim",
-        config = require("lsp-colors").setup(),
-      },
-    },
-  })
-
-  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
-
-  use({
-    "folke/trouble.nvim",
-    config = require("trouble").setup({}),
-  })
+  use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
 
   -- Auto completar
   use({
@@ -218,28 +186,49 @@ return require("packer").startup(function(use)
 
   use({ "windwp/nvim-autopairs" })
 
-  use({ "ggandor/leap.nvim" })
+  use({
+    "ggandor/leap.nvim",
+    requires = "ggandor/flit.nvim"
+  })
 
   -- use({ "phaazon/hop.nvim" })
 
-  use({ "rhysd/clever-f.vim" })
+  use({ })
 
   -- Mantém o layout da janela ao fechar um buffer
   use({ "famiu/bufdelete.nvim" })
 
   use({ "numToStr/BufOnly.nvim" })
 
-  use ({ "fedepujol/move.nvim" })
+  use({ "fedepujol/move.nvim" })
 
-  use ({ "nvim-orgmode/orgmode" })
+  use({ "nvim-orgmode/orgmode" })
 
   -- Cria guia de identação (muito pesado)
   -- use({ "lukas-reineke/indent-blankline.nvim" })
 
-  use ({
-    "lewis6991/impatient.nvim",
-    requires = "tami5/sqlite.lua"
+  use({ "glacambre/firenvim" })
+
+  -- Configuração de LSP
+  use({
+    "neovim/nvim-lspconfig",
+    requires = {
+      "williamboman/nvim-lsp-installer",
+      "jose-elias-alvarez/null-ls.nvim",
+      "mfussenegger/nvim-lint",
+      "barreiroleo/ltex-extra.nvim",
+      { "folke/lsp-colors.nvim" },
+    },
   })
+
+  use({ "lewis6991/impatient.nvim" })
+
+  -- Comentar texto usando gcc
+  use({ "numToStr/Comment.nvim" })
+
+  use({ "kyazdani42/nvim-web-devicons" })
+
+  use({ "folke/trouble.nvim" })
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
