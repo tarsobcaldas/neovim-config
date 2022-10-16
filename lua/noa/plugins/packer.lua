@@ -39,7 +39,7 @@ packer.init({
 
 return require("packer").startup(function(use)
   -- Packer can manage itself
-  use("wbthomason/packer.nvim")
+  use({ "wbthomason/packer.nvim" })
 
   -- 	-- Lazy loading:
   -- 	-- Load on specifc commands
@@ -72,6 +72,7 @@ return require("packer").startup(function(use)
     requires = {
       "lewis6991/gitsigns.nvim",
       "sindrets/diffview.nvim",
+      "akinsho/git-conflict.nvim",
       "nvim-lua/plenary.nvim",
     },
   })
@@ -165,6 +166,7 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-github.nvim",
       "nvim-telescope/telescope-arecibo.nvim",
       "nvim-telescope/telescope-media-files.nvim",
+      "nvim-telescope/telescope-github.nvim",
       rocks = { "openssl", "lua-http-parser" },
     },
   })

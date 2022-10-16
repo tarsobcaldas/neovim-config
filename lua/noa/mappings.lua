@@ -8,35 +8,36 @@ local function noremap(mode, shortcut, command)
   map(mode, shortcut, command, opts)
 end
 
-local normal = {
-  -- Clever F
-  [";"] = "<Plug>(clever-f-repeat-forward)",
-  [","] = "<Plug>(clever-f-repeat-back)",
+local normal_mappings = {
+  -- Leap
+  ["t"] = "<Plug>(leap-forward)",
+  ["T"] = "<Plug>(leap-backward)",
 
   -- open URL without netrw
   ["gx"] = "<Plug>(openbrowser-smart-search)",
 
 	["]b"] = "<cmd>BufferLineCycleNext<cr>",
 	["[b"] = "<cmd>BufferLineCyclePrev<cr>",
+
   -- Gitsigns
   ["]g"] = ":Gitsigns next_hunk<cr>",
   ["[g"] = ":Gitsigns prev_hunk<cr>",
+  ["<leader>sh"]  = ":Gitsigns stage_hunk<cr>",
+  ["<leader>rh"]  = ":Gitsigns reset_hunk<cr>",
+  ["<leader>sb"]  = ":Gitsigns stage_buffer<cr>",
+  ["<leader>ph"]  = ":Gitsigns preview_hunk<cr>",
+  ["<leader>gb"]  = ":Gitsigns blame_line<cr>",
+  ["<leader>gd"]  = ":Gitsigns diffthis<cr>",
+  ["<leader>gqf"] = ":Gitsigns setqflist<cr>",
 
-	-- add empty lines
-	["[<leader>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
-	["]<leader>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
-
-	["<leader>ut"] = "<cmd>lua require('undotree').toggle()<cr>",
-
-	-- Use cd to change to current folder
-	["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
-
-	["<leader>xx"] = "<cmd>Bdelete<cr>",
-	["<leader>xf"] = "<cmd>Bdelete!<cr>",
-  ["<leader>xa"] = "<cmd>BufOnly<cr>",
-
-  ["<leader><"] = "<cmd>BufferLineMovePrev<cr>",
-  ["<leader>>"] = "<cmd>BufferLineMoveNext<cr>",
+  -- Git conflict
+  ["]x"] = "<Plug>(git-conflict-prev-conflict)",
+  ["[x"] = "<Plug>(git-conflict-next-conflict)",
+  ["<leader>co"] = "<Plug>(git-conflict-ours)",
+  ["<leader>ct"] = "<Plug>(git-conflict-theirs)",
+  ["<leader>cb"] = "<Plug>(git-conflict-both)",
+  ["<leader>c0"] = "<Plug>(git-conflict-none)",
+  ["<leader>cqf"] = ":GitCoflictListQf<cr>",
 
 	-- Move through windows
 	["<M-h>"] = "<c-w>h",
@@ -44,18 +45,41 @@ local normal = {
 	["<M-k>"] = "<c-w>k",
 	["<M-l>"] = "<c-w>l",
 
+  -- Mouse
+  ["<X1Mouse>"] = "<C-O>",
+  ["<X2Mouse>"] = "<C-I>",
+  ["<C-MiddleMouse>"] = "u",
+  ["<A-MiddleMouse>"] = "<C-R>",
+
   -- Move.nvim
   ["<C-Up>"] = ":MoveLine(-1)<CR>",
   ["<C-Down>"] = ":MoveLine(1)<CR>",
   ["<C-Left>"] = ":MoveHChar(-1)<CR>",
   ["<C-Right>"] = ":MoveHChar(1)<CR>",
 
-	["<leader>mt"] = "<Plug>MarkdownPreviewToggle",
-
 	-- Quickfix
 	["<C-j>"] = ":cnext<cr>",
 	["<C-k>"] = ":cprevious<cr>",
 	["<leader>qf"] = ":copen<cr>",
+
+	-- add empty lines
+	["[<space>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
+	["]<space>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
+
+	["<leader>ut"] = "<cmd>lua require('undotree').toggle()<cr>",
+
+	-- Use cd to change to current folder
+	["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
+
+  -- Manipulate buffers
+	["<leader>xx"] = "<cmd>Bdelete<cr>",
+	["<leader>xf"] = "<cmd>Bdelete!<cr>",
+  ["<leader>xa"] = "<cmd>BufOnly<cr>",
+  ["<leader><"] = "<cmd>BufferLineMovePrev<cr>",
+  ["<leader>>"] = "<cmd>BufferLineMoveNext<cr>",
+
+  -- MarkdownPreview
+	["<leader>mt"] = "<Plug>MarkdownPreviewToggle",
 
 	-- Trouble
 	["<leader>tt"] = "<cmd>TroubleToggle<cr>",
@@ -91,27 +115,40 @@ local normal = {
 
   -- Neogit
   ["<leader>ng"] = ":Neogit<cr>",
+
+  -- Nabla
   ["<leader>nb"] = "<cmd>lua require('nabla').popup()<cr>",
+
+  -- Snippets
+  ["<leader>es"] = "<cmd>lua require('luasnip.loaders').edit_snippet_files()",
 }
 
-local insert = {
-	-- Insert mode:
+-- Insert mode mappings
+local insert_mappings = {
+  -- Move through windows
 	["<M-h>"] = "<Esc><c-w>h",
 	["<M-j>"] = "<Esc><c-w>j",
 	["<M-k>"] = "<Esc><c-w>k",
 	["<M-l>"] = "<Esc><c-w>l",
+
+  -- For fire.nvim
+  ["<C-u>"] = "<C-w>",
 }
 
-local terminal = {
-	-- Terminal mode:
+-- Terminal mode mappings
+local terminal_mappings = {
+  -- Move through windows
 	["<M-h>"] = "<c-\\><c-n><c-w>h",
 	["<M-j>"] = "<c-\\><c-n><c-w>j",
 	["<M-k>"] = "<c-\\><c-n><c-w>k",
 	["<M-l>"] = "<c-\\><c-n><c-w>l",
+
+  -- Leave Terminal Mode
 	["<ESC><ESC>"] = "<C-\\><C-N>",
 }
 
-local visual = {
+-- Visual mode mappings
+local visual_mappings = {
   -- Leap
   ["x"] = "<Plug>(leap-forward-x)",
   ["X"] = "<Plug>(leap-backward-x)",
@@ -123,6 +160,7 @@ local visual = {
   -- open URL without netrw
   ["gx"] = "<Plug>(openbrowser-smart-search)",
 
+  -- Move through windows
 	["<M-h>"] = "<Esc><c-w>h",
 	["<M-j>"] = "<Esc><c-w>j",
 	["<M-k>"] = "<Esc><c-w>k",
@@ -133,58 +171,29 @@ local visual = {
   ["<C-Down>"] = ":MoveBlock(1)<CR>",
   ["<C-Left>"] = ":MoveHBlock(-1)<CR>",
   ["<C-Right>"] = ":MoveHBlock(1)<CR>",
-
 }
 
-local command = {}
+-- Command mode mappings
+local command_mappings = {}
 
-for k, v in pairs(normal) do
+
+-- Make mappings take effect
+for k, v in pairs(normal_mappings) do
 	noremap("n", k, v)
 end
 
-for k, v in pairs(insert) do
+for k, v in pairs(insert_mappings) do
 	noremap("i", k, v)
 end
 
-for k, v in pairs(terminal) do
+for k, v in pairs(terminal_mappings) do
 	noremap("t", k, v)
 end
 
-for k, v in pairs(visual) do
+for k, v in pairs(visual_mappings) do
 	noremap("v", k, v)
 end
 
-for k, v in pairs(command) do
+for k, v in pairs(command_mappings) do
 	noremap("c", k, v)
-end
-
--- Search visual mode
-vim.cmd([[
-vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
-
-vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
-]])
-
-
--- Knap
-local knap_mappings = {
-  ["<leader>kp"] = function() require("knap").process_once() end,
-  ["<leader>kc"] = function() require("knap").close_viewer() end,
-  ["<leader>kj"] = function() require("knap").forward_jump() end,
-  ["<leader>kk"] = function() require("knap").toggle_autopreviewing() end,
-}
-local kmap = vim.keymap.set
-
-for k, v in pairs(knap_mappings) do
-  kmap("n", k, v)
-  kmap("i", k, v)
-  kmap("v", k, v)
 end
