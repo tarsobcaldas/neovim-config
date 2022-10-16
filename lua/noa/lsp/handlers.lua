@@ -79,7 +79,7 @@ M.on_attach = function(client, bufnr)
       formatting_callback(client, bufnr)
   if client.name ~= "texlab" then
     if vim.bo.filetype == "tex" then
-      client.resolved_capabilities.document_formatting = false
+      client.server_capabilities.document_formatting = false
     end
   end
 end

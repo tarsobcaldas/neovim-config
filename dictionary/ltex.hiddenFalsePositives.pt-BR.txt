@@ -1,0 +1,44 @@
+{"rule":"GENERAL_NUMBER_AGREEMENT_ERRORS","sentence":"^\\QPara mais comentários sobre as teorias mencionadas aqui, verificar a seção Para Professores inicial do módulo de funções.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q.[1]Divisões apenas do material do professor.\\E$"}
+{"rule":"NOTE","sentence":"^\\Q.3 Notas[1].\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\Qcom o nome Material Adicional., sem título O mesmo que os outros banners.\\E$"}
+{"rule":"TOO_LONG_PARAGRAPH","sentence":"^\\QComandos de divisão do documento.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qcom o nome Material Adicional., sem título O mesmo que os outros banners.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QMaterial Adicional Cria um banner.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QO mesmo que os outros banners.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\Qque o nível de hierarquia pode ser variado, isto é, caso utilize o comando normalmente, ele possui a mesma hierarquia dos outros banners., caso seja usada a opção \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, é dada uma quebra de página.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qque o nível de hierarquia pode ser variado, isto é, caso utilize o comando normalmente, ele possui a mesma hierarquia dos outros banners., caso seja usada a opção \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, é dada uma quebra de página.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QÉ o único banner.\\E$"}
+{"rule":"GENERAL_NUMBER_AGREEMENT_ERRORS","sentence":"^\\Qapenas com o nome Exercícios., sem título.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qapenas com o nome Exercícios., sem título.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QExercícios Cria um banner.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QGera apenas um título de subseção genérico, em vez de um banner Subseção Título simples com a cor do banner atual (Não gera entrada na Tabela de Conteúdos).\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qcom a cor da respectiva divisão, o nome da divisão e um título, modificando a cor de elementos do conteúdo.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QGera apenas um título de subseção genérico, em vez de um banner Subseção Título simples com a cor do banner.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qatual (Não gera entrada na Tabela de Conteúdos).\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QCria um banner.\\E$"}
+{"rule":"HUNSPELL_RULE","sentence":"^\\QSeção Cria um título numerado em uma página de rosto Sem modificações Banners.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qna mesma página.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qe Por quê.\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\Qe Por quê?.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qe Por quê?.\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\QCria a página de créditos e as caixas O quê?.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QMaterial Adicional // \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Seção de conteúdos adicionais fora do texto principal (encartes, fichas, referências, ).\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QO comando possui uma opção \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, para ter a mesma hierarquia de uma seção, sendo por padrão a mesma dos outros banners., e deve ser usada caso se tenha apenas uma seção de exercícios para o capítulo.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QExercícios // \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q ou \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q É também um banner., mas que possui alinhamento diferente dos demais, utilizando a cor principal da coleção (azul-escuro), e não possui título.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QBanners.\\E$"}
+{"rule":"BARBARISMS","sentence":"^\\QSeção / \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Separa o capítulo em seções e agrupa os banners., pode incluir introdução para o aluno antes do Explorando.\\E$"}
+{"rule":"HUNSPELL_RULE","sentence":"^\\Ql>p.25cp.40 Divisão Comando Hierarquia Descrição Volume // \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Agrupamento de capítulos de um mesmo módulo ou o módulo inteiro (Educação Financeira, Funções (volume 1), etc.).\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Ql>p.25cp.40 Divisão Comando Hierarquia Descrição Volume // \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Agrupamento de capítulos de um mesmo módulo ou o módulo inteiro (Educação Financeira, Funções (volume 1), etc.).\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qpara apressados.\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\QCria apenas um título simplificado, com o nome do capítulo e os autores, com O quê?.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qllc.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QPossui um comando próprio // para enumerar sugestões específicas (divisão da turma, duração, possíveis dificuldades, ) Solução \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Auto-explicativo Comandos da coluna lateral do material do professor.\\E$"}
+{"rule":"AO_MESMO_TEMPO-EM_SIMULTANEO","sentence":"^\\QCom frequência o conteúdo desejado para o professor é grande demais para a coluna, mas, ao mesmo tempo, não é suficiente para preencher uma página com o ambiente \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\Q//: texto introdutório Por quê?.\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\Q//: texto introdutório O quê?..\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\Q//: texto introdutório Por quê?..\\E$"}
+{"rule":"REPEATED_WORDS_3X","sentence":"^\\Q//: nome dos autores separados por // //: nome dos revisores separados por // //: versão atual do documento //: autor(es) das figuras técnias, separados por // //: author(es) das ilustrações do capítulo, separados por //.\\E$"}
+{"rule":"REPEATED_WORDS_3X","sentence":"^\\Q//: nome dos autores separados por // //: nome dos revisores separados por // //: versão atual do documento //: autor(es) das figuras técnicas, separados por // //: autor(es) das ilustrações do capítulo, separados por //.\\E$"}
+{"rule":"FINAL_STOPS","sentence":"^\\QManual para a colaboração no livro do ensino médio do projeto Livro Aberto de Matemática Tarso Boudet Caldas\\E$"}

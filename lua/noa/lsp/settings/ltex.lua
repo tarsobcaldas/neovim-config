@@ -1,36 +1,26 @@
--- local	on_attach = require("noa.lsp.handlers").on_attach
--- local	capabilities = require("noa.lsp.handlers").capabilities
+local	on_attach = require("noa.lsp.handlers").on_attach
+local	capabilities = require("noa.lsp.handlers").capabilities
 
--- require("lspconfig").ltex.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---  --  -- autostart = true,
--- 	-- settings = {
--- 	-- 	ltex = {
--- 	-- 		enabled = { "markdown", "tex", "latex", "bib"},
---  --      markdown = {
---  --        nodes = {["CodeBlock"] = "ignore", ["Code"] =  "ignore"}
---  --      },
--- 	-- 		language ={"pt-BR"},
--- 	-- 		diagnosticSeverity = "information",
--- 	-- 		setenceCacheSize = 2000,
--- 	-- 		additionalRules = {
--- 	-- 			enablePickyRules = true,
--- 	-- 			motherTongue = {"pt-BR"},
--- 	-- 		},
--- 	-- 		trace = { server = "verbose" },
---  --      -- disabledRules = {
---  --      --   ["en"] = { "MORFOLOGIK_RULE_EN" },
---  --      --   ["en-AU"] = { "MORFOLOGIK_RULE_EN_AU" },
---  --      --   ["en-CA"] = { "MORFOLOGIK_RULE_EN_CA" },
---  --      --   ["en-GB"] = { "MORFOLOGIK_RULE_EN_GB" },
---  --      --   ["en-NZ"] = { "MORFOLOGIK_RULE_EN_NZ" },
---  --      --   ["en-US"] = { "MORFOLOGIK_RULE_EN_US" },
---  --      --   ["en-ZA"] = { "MORFOLOGIK_RULE_EN_ZA" },
---  --      --   ["es"] = { "MORFOLOGIK_RULE_ES" },
---  --      --   ["it"] = { "MORFOLOGIK_RULE_IT_IT" },
---  --      --   ["de"] = { "MORFOLOGIK_RULE_DE_DE" },
---  --      -- },
--- 	-- 	},
--- 	-- },
--- }
+require("lspconfig").ltex.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    require("ltex_extra").setup{
+      load_langs = { "pt-BR", "en-US" }, -- table <string> : languages for witch dictionaries will be loaded
+      init_check = true, -- boolean : whether to load dictionaries on startup
+      path = vim.fn.stdpath 'config' .. "/dictionary/", -- string : path to store dictionaries. Relative path uses current working directory
+      log_level = "none", -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+    }
+  end,
+  settings = {
+    ltex = {
+        -- your settings.
+      checkFrequency="save",
+      language="pt-BR",
+      additionalRules = {
+        enablePickyRules = true,
+        motherTongue= "pt-BR",
+      };
+    }
+  }
+}
