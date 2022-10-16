@@ -36,3 +36,5 @@ require('cmp').setup.buffer {
     -- other sources
   }),
 }
+
+require('nabla').disable_virt()

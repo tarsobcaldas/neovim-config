@@ -1,7 +1,7 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local luasnip_loaders = require("luasnip.loaders.from_vscode")
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -17,18 +17,6 @@ local super_tab_next = function(fallback)
     fallback()
   end
 end
-
--- local super_tab_next = function(fallback)
--- 	if cmp.visible() then
--- 		cmp.select_next_item()
--- 	elseif luasnip.expand_or_jumpable() then
--- 		luasnip.expand_or_jump()
--- 	elseif has_words_before() then
--- 		cmp.complete()
--- 	else
--- 		fallback()
--- 	end
--- end
 
 local super_tab_previous = function(fallback)
 	if cmp.visible() then
@@ -55,10 +43,7 @@ end
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			luasnip.lsp_expand(args.body) -- For `luasnip` users.
-			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-			-- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 
@@ -113,11 +98,11 @@ cmp.setup({
 			cmp.config.compare.offset,
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
-			require("cmp-under-comparator").under,
 			cmp.config.compare.kind,
 			cmp.config.compare.sort_text,
 			cmp.config.compare.length,
 			cmp.config.compare.order,
+			require("cmp-under-comparator").under,
 		},
 	},
 })
@@ -138,11 +123,7 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
--- -- Configures auto pairs <CR>
--- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "{" } }))
--- cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
+luasnip.config.setup({ history = false })
 
--- require("luasnip/loaders/from_vscode").load({
---   paths = { "~/AppData/Local/nvim/" }
--- })
+luasnip_loaders.load({paths = "./vscode_snippets"})
 

@@ -18,7 +18,7 @@ local options = {
 	timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
 	ttimeoutlen = 90, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
-  undodir = "~/.config/nvim/undodir",
+  undodir = vim.fn.expand'~/.config/nvim/undodir',
 	updatetime = 300, -- faster completion (4000ms default)
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces
@@ -35,10 +35,10 @@ local options = {
   keymap = "accents",
   hidden = true,
   laststatus = 3,
+	clipboard = "unnamedplus"
 }
 
 vim.opt.shortmess:append "c"
-vim.cmd "colorscheme duskfox"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
 -- vim.cmd "syntax off"
@@ -95,22 +95,22 @@ for k, v in pairs(settings) do
   vim.g[k] = v
 end
 
-vim.cmd([[
-	if has ('win32')
-	  let &shell = has('win32') ? 'powershell' : 'pwsh'
-	  let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned'
-	  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-	  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-	  set shellquote= shellxquote=
-	endif
-
-	if has('win32')
-		let g:python3_host_prog='~/AppData/Local/Programs/Python/Python310/python.exe'
-		let g:python_host_prog= 'C:/Python27/python.exe'
-	endif
-
-  let $BROWSER = 'chrome.exe'
-]])
+-- vim.cmd([[
+-- 	if has ('win32')
+-- 	  let &shell = has('win32') ? 'powershell' : 'pwsh'
+-- 	  let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned'
+-- 	  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+-- 	  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+-- 	  set shellquote= shellxquote=
+-- 	endif
+--
+-- 	if has('win32')
+-- 		let g:python3_host_prog='~/AppData/Local/Programs/Python/Python310/python.exe'
+-- 		let g:python_host_prog= 'C:/Python27/python.exe'
+-- 	endif
+--
+--   let $BROWSER = 'chrome.exe'
+-- ]])
 
 
 vim.cmd([[

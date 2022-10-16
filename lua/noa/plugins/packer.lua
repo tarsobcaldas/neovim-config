@@ -176,6 +176,7 @@ return require("packer").startup(function(use)
     requires = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
+      "smjonas/snippet-converter.nvim"
     },
   })
 
