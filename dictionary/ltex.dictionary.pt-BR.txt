@@ -40,3 +40,16 @@ livroabertoem
 cls
 Dummy
 Boudet
+tex
+BibDummy
+Antonello
+Dênis
+Monzon
+Rezende
+SEED
+Rostirolla
+Elizangela
+chapterillustration
+Git
+TikZ
+Buena

@@ -215,8 +215,10 @@ return require("packer").startup(function(use)
   use({
     "neovim/nvim-lspconfig",
     requires = {
-      "williamboman/nvim-lsp-installer",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
       "jose-elias-alvarez/null-ls.nvim",
+      "jay-babu/mason-null-ls.nvim",
       "mfussenegger/nvim-lint",
       "barreiroleo/ltex-extra.nvim",
       { "folke/lsp-colors.nvim" },

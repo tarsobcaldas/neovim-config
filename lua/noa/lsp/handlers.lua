@@ -46,14 +46,14 @@ local lsp_keys = {
   ["gl"]         = '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
   ["[d"]         = '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
   ["]d"]         = '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
-  -- ["<C-k>"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>",
   ["<leader>D"]  = "<cmd>lua vim.lsp.buf.type_definition()<CR>",
   ["<leader>wa"] = "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>",
   ["<leader>wr"] = "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>",
   ["<leader>wl"] = "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
   ["<leader>rn"] = "<cmd>lua vim.lsp.buf.rename()<CR>",
   ["<leader>ca"] = "<cmd>lua vim.lsp.buf.code_action()<CR>",
-  ["<leader>pf"] = "<cmd>lua vim.lsp.buf.formatting()<CR>",
+  ["<leader>cl"] = "<cmd>lua vim.lsp.codelens()<CR>",
+  ["<leader>pf"] = "<cmd>lua vim.lsp.buf.format()<CR>",
   ["<leader>pq"] = "<cmd>lua vim.diagnostic.setloclist()<CR>",
 }
 
@@ -76,7 +76,7 @@ end
 M.on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   lsp_keymaps(bufnr)
-      formatting_callback(client, bufnr)
+  formatting_callback(client, bufnr)
   if client.name ~= "texlab" then
     if vim.bo.filetype == "tex" then
       client.server_capabilities.document_formatting = false
@@ -91,6 +91,6 @@ if not status_ok then
   return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

@@ -2,6 +2,7 @@ local	on_attach = require("noa.lsp.handlers").on_attach
 local	capabilities = require("noa.lsp.handlers").capabilities
 
 require("lspconfig").ltex.setup {
+  autostart = false,
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
@@ -24,3 +25,4 @@ require("lspconfig").ltex.setup {
     }
   }
 }
+
