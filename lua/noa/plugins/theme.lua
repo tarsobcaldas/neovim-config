@@ -1,4 +1,7 @@
-vim.cmd "colorscheme duskfox"
+vim.cmd([[
+  colorscheme tokyonight
+  colorscheme kanagawa
+]])
 
 require('lualine').setup {
  sections = {

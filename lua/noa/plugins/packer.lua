@@ -30,11 +30,11 @@ if not status_ok then
 end
 
 packer.init({
-  -- display = {
-  -- 	open_fn = function()
-  -- 		return require("packer.util").float({ border = "rounded" })
-  -- 	end,
-  -- },
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end,
+  },
 })
 
 return require("packer").startup(function(use)
@@ -53,17 +53,20 @@ return require("packer").startup(function(use)
 
   use({
     "SidOfc/mkdx",
-    { "iamcco/markdown-preview.nvim",
+    {
+      "iamcco/markdown-preview.nvim",
       run = function()
         vim.fn["mkdp#util#install"]()
-      end },
+      end
+    },
     ft = { "markdown" },
   })
 
   -- Post-install/update hook with neovim command
   use({
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate", requires = { "nvim-treesitter/playground" }
+    run = ":TSUpdate",
+    requires = { "nvim-treesitter/playground" }
   })
 
   -- Integração com Git
@@ -94,13 +97,24 @@ return require("packer").startup(function(use)
     "marko-cerovac/material.nvim",
     "Th3Whit3Wolf/one-nvim",
     "ray-x/starry.nvim",
+    "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
     opt = true
   })
 
-  use({ "lervag/vimtex" })
-  use({ 'f3fora/nvim-texlabconfig' })
-  use({ "jbyuki/nabla.nvim" })
-  -- use({ "frabjous/knap" })
+  -- tex
+  use({
+    "lervag/vimtex",
+    -- "frabjous/knap",
+    "jbyuki/nabla.nvim",
+    {"f3fora/nvim-texlabconfig", run = 'go build'}
+  })
+
+  use({
+    "mrcjkb/haskell-tools.nvim",
+    requires = {"nvim-lua/plenary.nvim"},
+    branch = "1.x.x"
+  })
 
   use({ "brymer-meneses/grammar-guard.nvim" })
   use({ "vigoux/LanguageTool.nvim" })
@@ -132,7 +146,7 @@ return require("packer").startup(function(use)
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-omni",
       "hrsh7th/cmp-emoji",
-      { "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
+      { "hrsh7th/cmp-nvim-lua",       ft = { "lua" } },
       "petertriho/cmp-git",
       { "kdheepak/cmp-latex-symbols", ft = { "tex" } },
       "lukas-reineke/cmp-under-comparator",
@@ -142,6 +156,8 @@ return require("packer").startup(function(use)
 
   use({
     "L3MON4D3/LuaSnip",
+    tag = "v<CurrentMajor>.*",
+    run = "make install_jsregexp",
     requires = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
@@ -166,7 +182,10 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-github.nvim",
       "nvim-telescope/telescope-arecibo.nvim",
       "nvim-telescope/telescope-media-files.nvim",
+      "nvim-telescope/telescope-packer.nvim",
       "nvim-telescope/telescope-github.nvim",
+      "keyvchan/telescope-find-pickers.nvim",
+      "crispgm/telescope-heading.nvim",
       rocks = { "openssl", "lua-http-parser" },
     },
   })
@@ -192,10 +211,6 @@ return require("packer").startup(function(use)
     "ggandor/leap.nvim",
     requires = "ggandor/flit.nvim"
   })
-
-  -- use({ "phaazon/hop.nvim" })
-
-  use({ })
 
   -- Mantém o layout da janela ao fechar um buffer
   use({ "famiu/bufdelete.nvim" })
@@ -233,6 +248,8 @@ return require("packer").startup(function(use)
   use({ "kyazdani42/nvim-web-devicons" })
 
   use({ "folke/trouble.nvim" })
+
+  -- use({ "rhysd/clever-f.vim" })
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

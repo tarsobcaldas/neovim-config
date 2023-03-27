@@ -5,7 +5,6 @@ require("nvim-treesitter.configs").setup({
     "latex", "bibtex", "markdown", "c", "lua", "vim", "cpp", "perl", "yaml", "help", "todotxt",
     "html", "json", "make", "python", "regex", "bash", "org"
   },
-  -- ignore_install = { "javascript" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = {"org"},

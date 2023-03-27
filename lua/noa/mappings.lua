@@ -1,4 +1,4 @@
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 local function map(mode, shortcut, command, options)
   vim.api.nvim_set_keymap(mode, shortcut, command, options)
@@ -9,6 +9,10 @@ local function noremap(mode, shortcut, command)
 end
 
 local normal_mappings = {
+  -- -- Clever F
+  -- [";"] = "<Plug>(clever-f-repeat-forward)",
+  -- [","] = "<Plug>(clever-f-repeat-back)",
+
   -- Leap
   ["t"] = "<Plug>(leap-forward)",
   ["T"] = "<Plug>(leap-backward)",
@@ -16,12 +20,12 @@ local normal_mappings = {
   -- open URL without netrw
   ["gx"] = "<Plug>(openbrowser-smart-search)",
 
-	["]b"] = "<cmd>BufferLineCycleNext<cr>",
-	["[b"] = "<cmd>BufferLineCyclePrev<cr>",
+  ["]b"] = "<cmd>BufferLineCycleNext<cr>",
+  ["[b"] = "<cmd>BufferLineCyclePrev<cr>",
 
   -- Gitsigns
-  ["]g"] = ":Gitsigns next_hunk<cr>",
-  ["[g"] = ":Gitsigns prev_hunk<cr>",
+  ["]g"]          = ":Gitsigns next_hunk<cr>",
+  ["[g"]          = ":Gitsigns prev_hunk<cr>",
   ["<leader>sh"]  = ":Gitsigns stage_hunk<cr>",
   ["<leader>rh"]  = ":Gitsigns reset_hunk<cr>",
   ["<leader>sb"]  = ":Gitsigns stage_buffer<cr>",
@@ -39,11 +43,11 @@ local normal_mappings = {
   ["<leader>c0"] = "<Plug>(git-conflict-none)",
   ["<leader>cqf"] = ":GitCoflictListQf<cr>",
 
-	-- Move through windows
-	["<M-h>"] = "<c-w>h",
-	["<M-j>"] = "<c-w>j",
-	["<M-k>"] = "<c-w>k",
-	["<M-l>"] = "<c-w>l",
+  -- Move through windows
+  ["<M-h>"] = "<c-w>h",
+  ["<M-j>"] = "<c-w>j",
+  ["<M-k>"] = "<c-w>k",
+  ["<M-l>"] = "<c-w>l",
 
   -- Mouse
   ["<X1Mouse>"] = "<C-O>",
@@ -57,57 +61,63 @@ local normal_mappings = {
   ["<C-Left>"] = ":MoveHChar(-1)<CR>",
   ["<C-Right>"] = ":MoveHChar(1)<CR>",
 
-	-- Quickfix
-	["<C-j>"] = ":cnext<cr>",
-	["<C-k>"] = ":cprevious<cr>",
-	["<leader>qf"] = ":copen<cr>",
+  -- Quickfix
+  ["<C-j>"] = ":cnext<cr>",
+  ["<C-k>"] = ":cprevious<cr>",
+  ["<leader>qf"] = ":copen<cr>",
 
-	-- add empty lines
-	["[<space>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
-	["]<space>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
+  -- add empty lines
+  ["[<space>"] = "<cmd>put! =repeat(nr2char(-10), v:count-1)<cr>",
+  ["]<space>"] = "<cmd>put =repeat(nr2char(10), v:count1)<cr>",
 
-	["<leader>ut"] = "<cmd>lua require('undotree').toggle()<cr>",
+  ["<leader>ut"] = "<cmd>lua require('undotree').toggle()<cr>",
 
-	-- Use cd to change to current folder
-	["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
+  -- Use cd to change to current folder
+  ["<leader>cd"] = ":cd %:p:h<CR>:pwd<CR>",
+
+  -- Use cd to change to current folder
+  ["<leader>hs"] = ":sp<CR>",
+  ["<leader>vs"] = ":vsp<CR>",
 
   -- Manipulate buffers
-	["<leader>xx"] = "<cmd>Bdelete<cr>",
-	["<leader>xf"] = "<cmd>Bdelete!<cr>",
+  ["<leader>xx"] = "<cmd>Bdelete<cr>",
+  ["<leader>xf"] = "<cmd>Bdelete!<cr>",
   ["<leader>xa"] = "<cmd>BufOnly<cr>",
   ["<leader><"] = "<cmd>BufferLineMovePrev<cr>",
   ["<leader>>"] = "<cmd>BufferLineMoveNext<cr>",
 
   -- MarkdownPreview
-	["<leader>mt"] = "<Plug>MarkdownPreviewToggle",
+  ["<leader>mt"] = "<Plug>MarkdownPreviewToggle",
 
-	-- Trouble
-	["<leader>tt"] = "<cmd>TroubleToggle<cr>",
-	["<leader>tw"] = "<cmd>Trouble workspace_diagnostics<cr>",
-	["<leader>td"] = "<cmd>Trouble document_diagnostics<cr>",
-	["<leader>tl"] = "<cmd>Trouble loclist<cr>",
-	["<leader>tq"] = "<cmd>Trouble quickfix<cr>",
-	["<leader>tr"] = "<cmd>Trouble lsp_references<cr>",
+  -- Trouble
+  ["<leader>tt"] = "<cmd>TroubleToggle<cr>",
+  ["<leader>tw"] = "<cmd>Trouble workspace_diagnostics<cr>",
+  ["<leader>td"] = "<cmd>Trouble document_diagnostics<cr>",
+  ["<leader>tl"] = "<cmd>Trouble loclist<cr>",
+  ["<leader>tq"] = "<cmd>Trouble quickfix<cr>",
+  ["<leader>tr"] = "<cmd>Trouble lsp_references<cr>",
 
-	-- Telescope
-	["<leader>fp"]  = "<cmd>Telescope project<cr>",
-	["<leader>fs"]  = "<cmd>Telescope file_browser<cr>",
-	["<leader>ff"]  = "<cmd>lua require('telescope.builtin').find_files()<cr>",
-	["<leader>fg"]  = "<cmd>lua require('telescope.builtin').live_grep()<cr>",
-	["<leader>fb"]  = "<cmd>lua require('telescope.builtin').buffers()<cr>",
-	["<leader>fh"]  = "<cmd>lua require('telescope.builtin').help_tags()<cr>",
-	["<leader>fk"]  = "<cmd>lua require('telescope.builtin').keymaps()<cr>",
-	["<leader>fc"]  = "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
-	["<leader>fo"]  = "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
-	["<leader>fq"]  = "<cmd>lua require('telescope.builtin').quickfix()<cr>",
-	["<leader>fre"] = "<cmd>lua require('telescope.builtin').resume()<cr>",
-	["<leader>frg"] = "<cmd>lua require('telescope.builtin').registers()<cr>",
-	["<leader>fmk"] = "<cmd>lua require('telescope.builtin').marks()<cr>",
-	["<leader>fmd"] = "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>",
+  -- Telescope
+  ["<leader>fs"]  = "<cmd>Telescope file_browser<cr>",
+  ["<leader>ff"]  = "<cmd>lua require('telescope.builtin').find_files()<cr>",
+  ["<leader>fg"]  = "<cmd>lua require('telescope.builtin').live_grep()<cr>",
+  ["<leader>fb"]  = "<cmd>lua require('telescope.builtin').buffers()<cr>",
+  ["<leader>fh"]  = "<cmd>lua require('telescope.builtin').help_tags()<cr>",
+  ["<leader>fk"]  = "<cmd>lua require('telescope.builtin').keymaps()<cr>",
+  ["<leader>fc"]  = "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
+  ["<leader>fo"]  = "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
+  ["<leader>fq"]  = "<cmd>lua require('telescope.builtin').quickfix()<cr>",
+  ["<leader>pj"]  = "<cmd>lua require('telescope').extensions.project.project()<cr>",
+  ["<leader>fre"] = "<cmd>lua require('telescope.builtin').resume()<cr>",
+  ["<leader>frg"] = "<cmd>lua require('telescope.builtin').registers()<cr>",
+  ["<leader>fmk"] = "<cmd>lua require('telescope.builtin').marks()<cr>",
+  ["<leader>fmd"] = "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>",
+  ["<leader>fpk"] = "<cmd>lua require('telescope').extensions.packer.packer()<cr>",
+  ["<leader>fpi"] = "<cmd>lua require('telescope').extensions.find_pickers.find_pickers()<cr>",
 
-	-- SessionManager
-	["<leader>sl"] = ":SessionManager load_session<cr>",
-	["<leader>sd"] = ":SessionManager delete_session<cr>",
+  -- SessionManager
+  ["<leader>sl"] = ":SessionManager load_session<cr>",
+  ["<leader>sd"] = ":SessionManager delete_session<cr>",
 
   -- Diffview
   ["<leader>do"] = ":DiffviewOpen<cr>",
@@ -126,10 +136,10 @@ local normal_mappings = {
 -- Insert mode mappings
 local insert_mappings = {
   -- Move through windows
-	["<M-h>"] = "<Esc><c-w>h",
-	["<M-j>"] = "<Esc><c-w>j",
-	["<M-k>"] = "<Esc><c-w>k",
-	["<M-l>"] = "<Esc><c-w>l",
+  ["<M-h>"] = "<Esc><c-w>h",
+  ["<M-j>"] = "<Esc><c-w>j",
+  ["<M-k>"] = "<Esc><c-w>k",
+  ["<M-l>"] = "<Esc><c-w>l",
 
   -- For fire.nvim
   ["<C-u>"] = "<C-w>",
@@ -138,13 +148,13 @@ local insert_mappings = {
 -- Terminal mode mappings
 local terminal_mappings = {
   -- Move through windows
-	["<M-h>"] = "<c-\\><c-n><c-w>h",
-	["<M-j>"] = "<c-\\><c-n><c-w>j",
-	["<M-k>"] = "<c-\\><c-n><c-w>k",
-	["<M-l>"] = "<c-\\><c-n><c-w>l",
+  ["<M-h>"] = "<c-\\><c-n><c-w>h",
+  ["<M-j>"] = "<c-\\><c-n><c-w>j",
+  ["<M-k>"] = "<c-\\><c-n><c-w>k",
+  ["<M-l>"] = "<c-\\><c-n><c-w>l",
 
   -- Leave Terminal Mode
-	["<ESC><ESC>"] = "<C-\\><C-N>",
+  ["<ESC><ESC>"] = "<C-\\><C-N>",
 }
 
 -- Visual mode mappings
@@ -161,10 +171,10 @@ local visual_mappings = {
   ["gx"] = "<Plug>(openbrowser-smart-search)",
 
   -- Move through windows
-	["<M-h>"] = "<Esc><c-w>h",
-	["<M-j>"] = "<Esc><c-w>j",
-	["<M-k>"] = "<Esc><c-w>k",
-	["<M-l>"] = "<Esc><c-w>l",
+  ["<M-h>"] = "<Esc><c-w>h",
+  ["<M-j>"] = "<Esc><c-w>j",
+  ["<M-k>"] = "<Esc><c-w>k",
+  ["<M-l>"] = "<Esc><c-w>l",
 
   -- Move.nvim
   ["<C-Up>"] = ":MoveBlock(-1)<CR>",
@@ -174,26 +184,29 @@ local visual_mappings = {
 }
 
 -- Command mode mappings
-local command_mappings = {}
+local command_mappings = {
+  ["<M-k>"] = "<C-p>",
+  ["<M-j>"] = "<C-n>"
+}
 
 
 -- Make mappings take effect
 for k, v in pairs(normal_mappings) do
-	noremap("n", k, v)
+  noremap("n", k, v)
 end
 
 for k, v in pairs(insert_mappings) do
-	noremap("i", k, v)
+  noremap("i", k, v)
 end
 
 for k, v in pairs(terminal_mappings) do
-	noremap("t", k, v)
+  noremap("t", k, v)
 end
 
 for k, v in pairs(visual_mappings) do
-	noremap("v", k, v)
+  noremap("v", k, v)
 end
 
 for k, v in pairs(command_mappings) do
-	noremap("c", k, v)
+  noremap("c", k, v)
 end
