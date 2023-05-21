@@ -4,9 +4,9 @@ local M = {}
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
+    { name = "DiagnosticSignInfo",  text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -34,7 +34,6 @@ M.setup = function()
   }
 
   vim.diagnostic.config(config)
-
 end
 
 local lsp_keys = {
@@ -47,6 +46,7 @@ local lsp_keys = {
   ["[d"]         = '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
   ["]d"]         = '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
   ["<leader>D"]  = "<cmd>lua vim.lsp.buf.type_definition()<CR>",
+  ["<leader>df"] = "<cmd>lua vim.diagnostic.open_float()<CR>",
   ["<leader>wa"] = "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>",
   ["<leader>wr"] = "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>",
   ["<leader>wl"] = "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
@@ -92,5 +92,7 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+
+M.lsp_keymaps = lsp_keys
 
 return M

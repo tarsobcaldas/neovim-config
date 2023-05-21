@@ -53,3 +53,7 @@ chapterillustration
 Git
 TikZ
 Buena
+Fun
+Term
+Env
+Value
