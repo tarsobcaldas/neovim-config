@@ -52,20 +52,22 @@ telescope.setup {
     media_files = {
       find_cmd = "rg"
     },
+    bookmarks = {
+      selected_browser = "chrome",
+      url_open_plugin = "open_browser"
+    },
     project = {
       theme = "dropdown"
-      -- display_type = "minimal",
-      -- layout_config = { center_list },
-      -- enable_preview = true
-    }
+    },
   }
 }
 
 telescope.load_extension('gh')
+telescope.load_extension('repo')
 telescope.load_extension('packer')
 telescope.load_extension('project')
 telescope.load_extension('arecibo')
 telescope.load_extension('ui-select')
+telescope.load_extension('bookmarks')
 telescope.load_extension('media_files')
-telescope.load_extension('file_browser')
 telescope.load_extension('file_browser')

@@ -189,6 +189,7 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-github.nvim",
       "keyvchan/telescope-find-pickers.nvim",
       "crispgm/telescope-heading.nvim",
+      "cljoly/telescope-repo.nvim",
       rocks = { "openssl", "lua-http-parser" },
     },
   })

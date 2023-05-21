@@ -1,7 +1,7 @@
 local opts = { noremap = true, silent = true }
 
 local function map(mode, shortcut, command, options)
-  vim.api.nvim_set_keymap(mode, shortcut, command, options)
+  vim.keymap.set(mode, shortcut, command, options)
 end
 
 local function noremap(mode, shortcut, command)
@@ -83,8 +83,8 @@ local normal_mappings = {
   ["<leader>xx"] = "<cmd>Bdelete<cr>",
   ["<leader>xf"] = "<cmd>Bdelete!<cr>",
   ["<leader>xa"] = "<cmd>BufOnly<cr>",
-  ["<leader><"] = "<cmd>BufferLineMovePrev<cr>",
-  ["<leader>>"] = "<cmd>BufferLineMoveNext<cr>",
+  ["<leader><"]  = "<cmd>BufferLineMovePrev<cr>",
+  ["<leader>>"]  = "<cmd>BufferLineMoveNext<cr>",
 
   -- MarkdownPreview
   ["<leader>mt"] = "<Plug>MarkdownPreviewToggle",
@@ -108,6 +108,8 @@ local normal_mappings = {
   ["<leader>fo"]  = "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
   ["<leader>fq"]  = "<cmd>lua require('telescope.builtin').quickfix()<cr>",
   ["<leader>pj"]  = "<cmd>lua require('telescope').extensions.project.project()<cr>",
+  ["<leader>bb"]  = "<cmd>lua require('telescope').extensions.bookmarks.bookmarks()<cr>",
+  ["<leader>frp"] = "<cmd>lua require('telescope').extensions.repo.repo()<cr>",
   ["<leader>fre"] = "<cmd>lua require('telescope.builtin').resume()<cr>",
   ["<leader>frg"] = "<cmd>lua require('telescope.builtin').registers()<cr>",
   ["<leader>fmk"] = "<cmd>lua require('telescope.builtin').marks()<cr>",
