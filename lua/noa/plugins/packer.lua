@@ -102,6 +102,9 @@ return require("packer").startup(function(use)
     opt = true
   })
 
+
+  use({ "HiPhish/nvim-ts-rainbow2" })
+
   -- tex
   use({
     "lervag/vimtex",
