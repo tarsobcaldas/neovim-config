@@ -47,7 +47,10 @@ return require("packer").startup(function(use)
   use({ "tpope/vim-abolish" })
   use({ "tpope/vim-repeat" })
 
-  use({ "tyru/open-browser.vim" })
+  use({
+    "tyru/open-browser.vim",
+    "dhruvmanila/browser-bookmarks.nvim"
+  })
 
   use({ "godlygeek/tabular", opt = true, cmd = { "Tabularize" } })
 
@@ -244,6 +247,8 @@ return require("packer").startup(function(use)
     },
   })
 
+  use({ "potamides/pantran.nvim" })
+
   use({ "lewis6991/impatient.nvim" })
 
   -- Comentar texto usando gcc
@@ -252,6 +257,13 @@ return require("packer").startup(function(use)
   use({ "kyazdani42/nvim-web-devicons" })
 
   use({ "folke/trouble.nvim" })
+
+  -- use({ 'archibate/nvim-gpt' })
+
+  -- use({
+  --   "jackMort/ChatGPT.nvim",
+  --   requires = {"MunifTanjim/nui.nvim"}
+  -- })
 
   -- use({ "rhysd/clever-f.vim" })
 
