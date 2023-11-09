@@ -1,6 +1,7 @@
 local actions = require('telescope.actions')
 local telescope = require('telescope')
 local previewers = require("telescope.previewers")
+local M = {}
 
 -- Dropdown list theme using a builtin theme definitions :
 local center_list = require "telescope.themes".get_dropdown({
@@ -12,7 +13,7 @@ local center_list = require "telescope.themes".get_dropdown({
 })
 
 
-telescope.setup {
+telescope.setup({
   defaults = {
     prompt_prefix = " >",
     color_devicons = true,
@@ -53,20 +54,19 @@ telescope.setup {
       find_cmd = "rg"
     },
     bookmarks = {
-      selected_browser = "chrome",
+      selected_browser = "msedge",
       url_open_plugin = "open_browser"
     },
     project = {
       theme = "dropdown"
     },
   }
-}
+})
+
 
 telescope.load_extension('gh')
 telescope.load_extension('repo')
-telescope.load_extension('packer')
 telescope.load_extension('project')
-telescope.load_extension('arecibo')
 telescope.load_extension('ui-select')
 telescope.load_extension('bookmarks')
 telescope.load_extension('media_files')

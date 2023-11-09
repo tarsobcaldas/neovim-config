@@ -20,21 +20,20 @@ require("lspconfig").texlab.setup {
     texlab = {
       build = {
         args = { "-interaction=nonstopmode", "-synctex=1", "-shell-escape", "-lualatex", "%f" },
-        executable = "latexmk",
-        forwardSearchAfter = true,
-        onSave = true,
+        executable = "arara",
+        -- forwardSearchAfter = true,
+        -- onSave = true,
       },
       chktex = {
         onOpenAndSave = true,
         onEdit = true
       },
-      auxDirectory = { "." },
-      -- formatterLineLength = { 72 },
-      latexFormatter = { "latexindent" },
-      latexindent = {
-            ['local'] = vim.fn.expand("~/.indentconfig.yaml"),
-        modifyLineBreaks = true
-      },
+      -- auxDirectory = { "." },
+      -- latexFormatter = { "latexindent" },
+      -- latexindent = {
+      --       ['local'] = vim.fn.expand("~/.indentconfig.yaml"),
+      --   modifyLineBreaks = true
+      -- },
       forwardSearch = {
         executable = executable,
         args = args,

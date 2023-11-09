@@ -5,6 +5,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 require('lint').linters_by_ft = {
-	tex = {'chktex'},
+	-- tex = {'chktex'},
   hs = {'hlint'}
 }
