@@ -84,50 +84,43 @@ local plugins = {
           "]x",
           "<Plug>(git-conflict-prev-conflict)",
           desc = "Previous git conflict",
-          noremap = true,
-          silent = true
+          noremap = true, silent = true
         },
         {
           "[x",
           "<Plug>(git-conflict-next-conflict)",
           desc = "Next git conflict",
-          noremap = true,
-          silent = true
+          noremap = true, silent = true
         },
         {
           "<leader>co",
           "<Plug>(git-conflict-ours)",
           desc = "Next git conflict",
-          noremap = true,
-          silent = true
+          noremap = true, silent = true
         },
         {
           "<leader>ct",
           "<Plug>(git-conflict-theirs)",
           desc = "Next git conflict",
-          noremap = true,
-          silent = true
+          noremap = true, silent = true
         },
         {
           "<leader>cb",
           "<Plug>(git-conflict-both)",
           desc = "Next git conflict",
-          noremap = true,
-          silent = true
+          noremap = true, silent = true
         },
         {
           "<leader>c0",
           "<Plug>(git-conflict-none)",
           desc = "Next git conflict",
-          noremap = true,
-          silent = true
+          noremap = true, silent = true
         },
         {
           "<leader>cqf",
           ":GitCoflictListQf<cr>",
           desc = "Next git conflict",
-          noremap = true,
-          silent = true
+          noremap = true, silent = true
         },
       }
     }
@@ -217,8 +210,7 @@ local plugins = {
         "<leader>es",
         "<cmd>lua require('luasnip.loaders').edit_snippet_files()",
         desc = "Edit snippet file",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
     },
     build = "make install_jsregexp",
@@ -259,120 +251,103 @@ local plugins = {
         "<leader>fs",
         "<cmd>Telescope file_browser<cr>",
         desc = "Telescope File Browser",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>ff",
         "<cmd>lua require('telescope.builtin').find_files()<cr>",
         desc = "Telescope Files",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fg",
         "<cmd>lua require('telescope.builtin').live_grep()<cr>",
         desc = "Telescope Live Grep",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fb",
         "<cmd>lua require('telescope.builtin').buffers()<cr>",
         desc = "Telescope Buffers",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fh",
         "<cmd>lua require('telescope.builtin').help_tags()<cr>",
         desc = "Telescope Help Files",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fk",
         "<cmd>lua require('telescope.builtin').keymaps()<cr>",
         desc = "Telescope Keymaps",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fc",
         "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
         desc = "Telescope Colorschemes",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fo",
         "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
         desc = "Telescope Old files",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fq",
         "<cmd>lua require('telescope.builtin').quickfix()<cr>",
         desc = "Telescope Quickfix List",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>pj",
         "<cmd>lua require('telescope').extensions.project.project()<cr>",
         desc = "Telescope Projects",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>bb",
         "<cmd>lua require('telescope').extensions.bookmarks.bookmarks()<cr>",
         desc = "Telescope Bookmarks",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>frp",
         "<cmd>lua require('telescope').extensions.repo.repo()<cr>",
         desc = "Telescope respositories",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fre",
         "<cmd>lua require('telescope.builtin').resume()<cr>",
         desc = "Open last Telescope search",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>frg",
         "<cmd>lua require('telescope.builtin').registers()<cr>",
         desc = "Telescope registers",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fmk",
         "<cmd>lua require('telescope.builtin').marks()<cr>",
         desc = "Telescope marks",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fmd",
         "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>",
         desc = "Telescope Media Files",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>fpi",
         "<cmd>lua require('telescope').extensions.find_pickers.find_pickers()<cr>",
         desc = "Telescope pickers",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
     }
   },
@@ -397,8 +372,7 @@ local plugins = {
         "<leader>ut",
         "<cmd>lua require('undotree').toggle()<cr>",
         desc = "Toggle Undotree",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       }
     }
   },
@@ -457,7 +431,7 @@ local plugins = {
     "fedepujol/move.nvim",
     keys = {
       { "<C-Up>",    ":MoveLine(-1)<CR>",  desc = "Move line up",         noremap = true, silent = true },
-      { "<C-Down>",  ":MoveLine(1)<CR>",   desc = "Move line down",       noremap = true, silent = true, },
+      { "<C-Down>",  ":MoveLine(1)<CR>",   desc = "Move line down",       noremap = true, silent = true },
       { "<C-Left>",  ":MoveHChar(-1)<CR>", desc = "Move character left",  noremap = true, silent = true },
       { "<C-Right>", ":MoveHChar(1)<CR>",  desc = "Move character right", noremap = true, silent = true },
     }
@@ -576,43 +550,37 @@ local plugins = {
         "<leader>tt",
         "<cmd>TroubleToggle<cr>",
         desc = "Toggle trouble.nvim",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>tw",
         "<cmd>Trouble workspace_diagnostics<cr>",
         desc = "Workspace diagnostics on trouble.nvim",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>td",
         "<cmd>Trouble document_diagnostics<cr>",
         desc = "Document diagnostics on trouble.nvim",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>tl",
         "<cmd>Trouble loclist<cr>",
         desc = "Loclist on trouble.nvim",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>tq",
         "<cmd>Trouble quickfix<cr>",
         desc = "Quickfixlist on trouble.nvim",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       },
       {
         "<leader>tr",
         "<cmd>Trouble lsp_references<cr>",
         desc = "LSP references on trouble.nvim",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       }
     }
   },
@@ -625,6 +593,9 @@ local plugins = {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    keys = {
+      { "<leader><leader>", "<cmd>NoiceDismiss<cr>", noremap = true, silent = true }
+    },
     opts = {
       lsp = {
         override = {
@@ -701,14 +672,14 @@ local plugins = {
         "<M-o>",
         "<Cmd>lua require'jdtls'.organize_imports()<CR>",
         desc = "Organize imports",
-        normap = true,
+        noremap = true,
         silent = true
       },
       {
         "crv",
         "<Cmd>lua require('jdtls').extract_variable()<CR>",
         desc = "Extract variable",
-        normap = true,
+        noremap = true,
         silent = true
       },
       {
@@ -716,14 +687,14 @@ local plugins = {
         "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
         desc = "Extract variable (visual)",
         mode = { "v" },
-        normap = true,
+        noremap = true,
         silent = true
       },
       {
         "crc",
         "<Cmd>lua require('jdtls').extract_constant()<CR>",
         desc = "Extract constant",
-        normap = true,
+        noremap = true,
         silent = true
       },
       {
@@ -731,7 +702,7 @@ local plugins = {
         "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
         desc = "Extract constant (true)",
         mode = { "v" },
-        normap = true,
+        noremap = true,
         silent = true
       },
       {
@@ -739,15 +710,14 @@ local plugins = {
         "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
         desc = "Extract method (true)",
         mode = { "v" },
-        normap = true,
+        noremap = true,
         silent = true
       },
       {
         "<M-c>",
         ":JdtCompile",
         desc = "Compile",
-        noremap = true,
-        silent = true
+        noremap = true, silent = true
       }
     }
   }

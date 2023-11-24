@@ -38,7 +38,7 @@ tsinstall.compilers = { "gcc" }
 tsconfig.setup({
   ensure_installed = {
     "latex", "bibtex", "markdown", "c", "lua", "vim", "cpp", "perl", "yaml", "todotxt",
-    "html", "json", "make", "python", "regex", "bash",
+    "html", "json", "make", "python", "regex", "bash", "haskell"
   },
   highlight = {
     enable = true,
