@@ -1,15 +1,13 @@
 local ht = require('haskell-tools')
-local buffer = vim.api.nvim_get_current_buf()
+local bufr = vim.api.nvim_get_current_buf()
 local def_opts = { noremap = true, silent = true, }
 local capabilities = require("noa.lsp.handlers").capabilities
 
-ht.start_or_attach {
+vim.g.haskell_tools = {
   hls = {
     capabilities = capabilities,
-    on_attach = function(client, bufnr)
-      local opts = vim.tbl_extend('keep', def_opts, { buffer = bufnr, })
-      -- haskell-language-server relies heavily on codeLenses,
-      -- so auto-refresh (see advanced configuration) is enabled by default
+    on_attach = function(client, bufnr, hts)
+      local opts = { noremap = true, silent = true, buffer=bufr }
       vim.keymap.set('n', '<space>cl', vim.lsp.codelens.run, opts)
       vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
       vim.keymap.set('n', '<space>ea', ht.lsp.buf_eval_all, opts)
@@ -17,17 +15,13 @@ ht.start_or_attach {
   },
 }
 
--- Suggested keymaps that do not depend on haskell-language-server:
-local bufnr = vim.api.nvim_get_current_buf()
 -- set buffer = bufnr in ftplugin/haskell.lua
-local opts = { noremap = true, silent = true, buffer = bufnr }
+local opts = { noremap = true, silent = true, buffer = bufr }
 
 -- Toggle a GHCi repl for the current package
 vim.keymap.set('n', '<leader>rr', ht.repl.toggle, opts)
 -- Toggle a GHCi repl for the current buffer
-vim.keymap.set('n', '<leader>rf', function()
-  ht.repl.toggle(vim.api.nvim_buf_get_name(0))
-end, def_opts)
+vim.keymap.set('n', '<leader>rf', function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, def_opts)
 vim.keymap.set('n', '<leader>rq', ht.repl.quit, opts)
 
 
@@ -53,5 +47,5 @@ local lsp_keys = {
 
 local lspkeys_opts = { noremap = true, silent = true }
 for k, v in pairs(lsp_keys) do
-  vim.api.nvim_buf_set_keymap(bufnr, "n", k, v, lspkeys_opts)
+  vim.api.nvim_buf_set_keymap(bufr, "n", k, v, lspkeys_opts)
 end
