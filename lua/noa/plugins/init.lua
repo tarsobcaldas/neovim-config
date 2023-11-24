@@ -198,6 +198,7 @@ local plugins = {
       { "kdheepak/cmp-latex-symbols", ft = { "tex" } },
       "lukas-reineke/cmp-under-comparator",
       "onsails/lspkind-nvim",
+      "zbirenbaum/copilot-cmp"
     },
   },
 
@@ -661,7 +662,6 @@ local plugins = {
   {
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
-    config = true
   },
 
   {

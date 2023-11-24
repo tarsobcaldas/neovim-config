@@ -71,7 +71,8 @@ cmp.setup({
     { name = "buffer" },
     { name = "path" },
     { name = "emoji" },
-    { name = "org" }
+    { name = "org" },
+    { name = "copilot" }
   }),
 
   formatting = {
@@ -84,6 +85,7 @@ cmp.setup({
         luasnip = "[Snippet]",
         omni = "[Omnifunc]",
         path = "[Path]",
+        copilot = "[Copilot]"
       },
     }),
   },
@@ -117,6 +119,14 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
+
+cmp.event:on("menu_opened", function()
+  vim.b.copilot_suggestion_hidden = true
+end)
+
+cmp.event:on("menu_closed", function()
+  vim.b.copilot_suggestion_hidden = false
+end)
 
 luasnip.config.setup({ history = false })
 
