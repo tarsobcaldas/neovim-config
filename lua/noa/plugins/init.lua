@@ -489,6 +489,77 @@ local plugins = {
   },
 
 
+  {
+    "mfussenegger/nvim-dap";
+    keys = {
+      {
+        "<Leader>dB", "<cmd>lua require('dap').set_breakpoint()<cr>",
+        desc = "Dap set breakpoint",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>",
+        desc = "Dap toggle breakpoint",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "<leader>dd", "<cmd>lua require('dap').continue()<cr>",
+        desc = "Dap Continue",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "<leader>ds", "<cmd>lua require('dap').step_over()<cr>",
+        desc = "Dap Step Over",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "<leader>di", "<cmd>lua require('dap').step_into()<cr>",
+        desc = "Dap Step Into",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "<leader>dr", "<cmd>lua require('dap').repl_open()<cr>",
+        desc = "Dap Toggle Repl",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "<leader>rl", "<cmd>lua require('dap').run_last()<cr>",
+        desc = "Dap Run Last",
+        noremap = true,
+        silent = true,
+      },
+      {
+        '<Leader>dh', "<cmd>lua require('dap.ui.widgets').hover()<cr>",
+        desc = "Dap Hover",
+        noremap = true,
+        silent = true,
+      },
+      {
+        '<Leader>dp', "<cmd>lua require('dap.ui.widgets').preview())<cr>",
+        desc = "Dap Preview",
+        noremap = true,
+        silent = true,
+      },
+      {
+        '<Leader>df', "<cmd>lua require('dap.ui.widgets').centered_float(widgets.frames)<cr>",
+        desc = "Dap Frames",
+        noremap = true,
+        silent = true,
+      },
+      {
+        '<Leader>ds', "<cmd>lua require('dap.ui.widgets').centered_float(widgets.scopes)<cr>",
+        desc = "Dap scopes",
+        noremap = true,
+        silent = true,
+      }
+    }
+  },
 
   -- Comentar texto usando gcc
   {
