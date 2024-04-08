@@ -126,6 +126,17 @@ local plugins = {
     }
   },
 
+  -- Remote development
+  {
+    {
+    "https://codeberg.org/esensar/nvim-dev-container",
+    config = true
+    },
+    {
+      "jamestthompson3/nvim-remote-containers",
+    }
+  },
+
   -- colorschemes
 
   {
@@ -662,6 +673,11 @@ local plugins = {
   {
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
+  },
+
+  {
+    "kiyoon/jupynium.nvim",
+    build = "pip3 install --user .",
   },
 
   {

@@ -84,7 +84,16 @@ M.on_attach = function(client, bufnr)
   end
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+function M.default_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = vim.tbl_deep_extend('force', capabilities, {
+    offsetEncoding = { "utf-16" },
+    general = {
+      positionEncodings = { "utf-16" },
+    },
+  })
+  return capabilities
+end
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
