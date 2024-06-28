@@ -57,3 +57,14 @@ Fun
 Term
 Env
 Value
+Babbage
+Deep
+Shogi
+shogi
+Markov
+AlphaZero
+retropropagação
+Retropropagação
+learning
+neuroprogramação
+AlphaGo

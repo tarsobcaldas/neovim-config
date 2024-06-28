@@ -41,14 +41,7 @@ local options = {
 vim.opt.shortmess:append "c"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
--- vim.cmd "syntax off"
 
-
--- local knap_settings = {
---   texoutputext = "pdf",
---   textopdf = "lualatex -synctex=1 -halt-on-error -interaction=batchmode -shell-escape %docroot%",
---   textopdfviewerlaung = "sioyek %outputfile%"
--- }
 
 local arara_settings = {
   options = '--verbose',
@@ -58,7 +51,6 @@ local latexmk_settings = {
   executable = 'latexmk',
   options = "-file-line-error -synctex=1 -interaction=nonstopmode"
 }
-
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
@@ -77,6 +69,7 @@ local settings = {
   loaded_matchit = 0,
   loaded_matchparen = 0,
   loaded_spec = 0,
+  loaded_coqtail = 1,
   clever_f_highlight_timeout_ms = 3000,
   material_style = "darker",
 	tex_flavor='latex',
@@ -85,10 +78,10 @@ local settings = {
 	vimtex_quickfix_ignore_filters = "",
   vimtex_syntax_enabled=0,
 	vimtex_quickfix_mode=0,
-  -- vimtex_view_use_temp_files=1,
 	vimtex_view_method = 'zathura',
   vimtex_compiler_latexmk = latexmk_settings,
   vimtex_compiler_arara = arara_settings,
+  ['coqtail#supported'] = 0,
 }
 
 for k, v in pairs(settings) do
@@ -96,35 +89,17 @@ for k, v in pairs(settings) do
 end
 
 -- vim.cmd([[
--- 	if has ('win32')
--- 	  let &shell = has('win32') ? 'powershell' : 'pwsh'
--- 	  let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned'
--- 	  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
--- 	  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
--- 	  set shellquote= shellxquote=
--- 	endif
+-- 	let g:vimtex_compiler_arara = {
+-- 		\ 'options' : ['--verbose'],
+-- 		\}			
 --
--- 	if has('win32')
--- 		let g:python3_host_prog='~/AppData/Local/Programs/Python/Python310/python.exe'
--- 		let g:python_host_prog= 'C:/Python27/python.exe'
--- 	endif
---
---   let $BROWSER = 'chrome.exe'
+--   let g:vimtex_compiler_latexmk = { 
+--           \ 'executable' : 'latexmk',
+--           \ 'options' : [ 
+--           \   '-lualatex',
+--           \   '-file-line-error',
+--           \   '-synctex=1',
+--           \   '-interaction=nonstopmode',
+--           \ ],
+--           \}
 -- ]])
-
-
-vim.cmd([[
-	let g:vimtex_compiler_arara = {
-		\ 'options' : ['--verbose'],
-		\}			
-
-  let g:vimtex_compiler_latexmk = { 
-          \ 'executable' : 'latexmk',
-          \ 'options' : [ 
-          \   '-lualatex',
-          \   '-file-line-error',
-          \   '-synctex=1',
-          \   '-interaction=nonstopmode',
-          \ ],
-          \}
-]])

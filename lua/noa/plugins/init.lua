@@ -64,6 +64,7 @@ local plugins = {
       opts = {
         integrations = { diffview = true }
       },
+      config = true,
       keys = {
         { "<leader>ng", ":Neogit<cr>", desc = "Open Neogit", noremap = true, silent = true }
       },
@@ -392,6 +393,15 @@ local plugins = {
   -- Terminal de fácil acesso
   { "akinsho/toggleterm.nvim" },
 
+
+  {
+    "stevearc/oil.nvim",
+    config = true,
+    keys = {
+      { "-", "<cmd>Oil<cr>", desc = "Open parent directory", noremap = true, silent = true }
+    }
+  },
+
   -- Liga relativenumber somente quando faz sentido
   { "jeffkreeftmeijer/vim-numbertoggle" },
 
@@ -630,7 +640,7 @@ local plugins = {
   },
 
 
-  { "kevinhwang91/nvim-ufo" },
+  -- { "kevinhwang91/nvim-ufo" },
 
   { "vladdoster/remember.nvim" },
 
@@ -736,6 +746,13 @@ local plugins = {
         noremap = true, silent = true
       }
     }
+  },
+
+  { 'whonore/Coqtail'},
+
+  {
+    'tomtomjhj/vscoq.nvim',
+    config = true
   }
 }
 

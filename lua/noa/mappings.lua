@@ -59,6 +59,10 @@ local insert_mappings = {
 
   -- For fire.nvim
   ["<C-u>"] = "<C-w>",
+
+  ["<A-;>"] = "::",
+  ["<A-,>"] = "<<",
+  ["<A-.>"] = ">>"
 }
 
 -- Terminal mode mappings

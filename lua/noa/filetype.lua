@@ -1,7 +1,8 @@
 require("filetype").setup({
 		overrides = {
 				extensions = {
-						def = "tex"
+						def = "tex",
+            zsh = "bash"
 				}
 		}
 })

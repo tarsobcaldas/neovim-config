@@ -20,8 +20,14 @@ lualine.setup {
     lualine_b = { 'branch', 'diff' },
     lualine_c = { 'filename', 'lsp_progress' },
     lualine_x = {
-      { 'diagnostics', sources = { 'nvim_diagnostic', 'ale' } },
-      'copilot', 'encoding', 'fileformat', 'filetype'
+      {
+        'diagnostics', sources = { 'nvim_diagnostic', 'ale' } 
+      },
+      {
+        'copilot',
+        show_colors = true
+      },
+      'encoding', 'fileformat', 'filetype'
     },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
@@ -38,7 +44,9 @@ tsinstall.compilers = { "gcc" }
 tsconfig.setup({
   ensure_installed = {
     "latex", "bibtex", "markdown", "c", "lua", "vim", "cpp", "perl", "yaml", "todotxt",
-    "html", "json", "make", "python", "regex", "bash", "haskell"
+    "html", "json", "make", "python", "regex", "bash", "haskell", "cmake", "java", "rust",
+    "javascript", "typescript", "css", "dockerfile", "scheme", "go", "vimdoc", "udev",
+    "query", "sql"
   },
   highlight = {
     enable = true,
@@ -67,14 +75,12 @@ tsconfig.setup({
   textobjects = {
     select = {
       enable = true,
-
       lookahead = true,
-
       keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        ["aC"] = "@class.outer",
+        ["iC"] = { query = "@class.inner", desc = "Select inner part of a class region" },
         ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
       },
       selection_modes = {
