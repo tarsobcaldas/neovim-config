@@ -165,7 +165,7 @@ local plugins = {
   },
 
   {
-    "HiPhish/nvim-ts-rainbow2"
+    "hiphish/rainbow-delimiters.nvim"
   },
 
   -- tex
@@ -639,11 +639,7 @@ local plugins = {
     event = "VeryLazy",
   },
 
-
-  -- { "kevinhwang91/nvim-ufo" },
-
   { "vladdoster/remember.nvim" },
-
 
   {
     "lervag/vimtex",

@@ -1,8 +1,8 @@
+
 ---@diagnostic disable: missing-fields
 local lualine    = require('lualine')
 local tsconfig   = require("nvim-treesitter.configs")
 local tsinstall  = require('nvim-treesitter.install')
-local tsrainbow  = require('ts-rainbow')
 local bufferline = require('bufferline')
 local tokyonight = require("tokyonight")
 
@@ -91,11 +91,4 @@ tsconfig.setup({
       include_surrounding_whitespace = true,
     },
   },
-  rainbow = {
-    enable = true,
-    query = 'rainbow-parens',
-    -- Highlight the entire buffer all at once
-    strategy = tsrainbow.strategy.global,
-    -- hlgroups = kanagawa_dragon_rainbow
-  }
 })
