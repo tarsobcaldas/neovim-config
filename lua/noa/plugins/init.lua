@@ -751,7 +751,24 @@ local plugins = {
   {
     'tomtomjhj/vscoq.nvim',
     config = true
+  },
+
+  {
+    'miversen33/netman.nvim'
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "3rd/image.nvim"
+    },
+    keys = {
+      {"<leader>nt", ":Neotree<CR>", desc = "Open Neotree"},
+    }
   }
+
 }
 
 local opts = {}

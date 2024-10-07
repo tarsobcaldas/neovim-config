@@ -13,6 +13,6 @@ vim.api.nvim_create_autocmd(
   {"BufRead", "BufNewFile"},
   {pattern = {"*.h"},
   callback = function()
-    vim.api.nvim_buf_set_option(0,'filetype','c')
+    vim.api.nvim_buf_set_var(0,'filetype','c')
   end
 })

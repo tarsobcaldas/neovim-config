@@ -1,7 +1,13 @@
--- vim.cmd([[
--- 		nnoremap <C-n> :NvimTreeToggle<CR>
--- 		nnoremap <leader>r :NvimTreeRefresh<CR>
--- 		nnoremap <leader>n :NvimTreeFindFile<CR>
--- ]])
-
--- require'nvim-tree'.setup{}
+require('netman')
+require("neo-tree").setup({
+  sources = {
+    "filesystem",
+    "netman.ui.neo-tree"
+  },
+  filesystem = {
+    hijack_netrw_behavior = "open_current",
+    window = {
+      position = "current"
+    }
+  }
+})
