@@ -660,6 +660,8 @@ local plugins = {
       ft = "tex",
       keys = {
         { "<leader>ll", ":TexlabBuild<cr>",   desc = "Build with Texlab", noremap = true, silent = true },
+        { "<leader>lL", ":TexlabCancelBuild<cr>",   desc = "Build with Texlab", noremap = true, silent = true },
+        { "<leader>lc", ":TexlabCleanAuxiliary<cr>",   desc = "Build with Texlab", noremap = true, silent = true },
         { "<leader>lv", ":TexlabForward<cr>", desc = "Forwward Search",   noremap = true, silent = true }
       }
     }

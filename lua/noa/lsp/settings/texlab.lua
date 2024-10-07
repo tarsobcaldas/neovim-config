@@ -1,12 +1,17 @@
 local on_attach = require("noa.lsp.handlers").on_attach
 local capabilities = require("noa.lsp.handlers").capabilities
-local executable = 'zathura'
+local executable = 'sioyek'
 local args = {
-  '--synctex-editor-command',
-  [[nvim-texlabconfig -file '%{input}' -line %{line}]],
-  '--synctex-forward',
-  '%l:1:%f',
-  '%p',
+   "--reuse-window",
+    "--execute-command",
+    "toggle_synctex",
+    "--inverse-search",
+    "texlab inverse-search -i \"%%1\" -l %%2",
+    "--forward-search-file",
+    "%f",
+    "--forward-search-line",
+    "%l",
+    "%p"
 }
 
 require('texlabconfig').setup(config)
@@ -20,8 +25,8 @@ require("lspconfig").texlab.setup {
     texlab = {
       build = {
         args = { "-interaction=nonstopmode", "-synctex=1", "-shell-escape", "-lualatex", "%f" },
-        executable = "arara",
-        -- forwardSearchAfter = true,
+        executable = "latexmk",
+        forwardSearchAfter = true,
         -- onSave = true,
       },
       chktex = {
