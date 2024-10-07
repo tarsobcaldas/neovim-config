@@ -570,19 +570,13 @@ local plugins = {
     keys = {
       {
         "<leader>tt",
-        "<cmd>TroubleToggle<cr>",
+        "<cmd>Trouble<cr>",
         desc = "Toggle trouble.nvim",
         noremap = true, silent = true
       },
       {
-        "<leader>tw",
-        "<cmd>Trouble workspace_diagnostics<cr>",
-        desc = "Workspace diagnostics on trouble.nvim",
-        noremap = true, silent = true
-      },
-      {
         "<leader>td",
-        "<cmd>Trouble document_diagnostics<cr>",
+        "<cmd>Trouble diagnostics<cr>",
         desc = "Document diagnostics on trouble.nvim",
         noremap = true, silent = true
       },
