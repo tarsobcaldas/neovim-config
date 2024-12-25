@@ -53,7 +53,7 @@ local plugins = {
       build = ":TSUpdate",
     },
     "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = { "nvim-treesitter/playground" }
+    "nvim-treesitter/playground"
   },
 
   -- Integração com Git
@@ -85,43 +85,50 @@ local plugins = {
           "]x",
           "<Plug>(git-conflict-prev-conflict)",
           desc = "Previous git conflict",
-          noremap = true, silent = true
+          noremap = true,
+          silent = true
         },
         {
           "[x",
           "<Plug>(git-conflict-next-conflict)",
           desc = "Next git conflict",
-          noremap = true, silent = true
+          noremap = true,
+          silent = true
         },
         {
           "<leader>co",
           "<Plug>(git-conflict-ours)",
           desc = "Next git conflict",
-          noremap = true, silent = true
+          noremap = true,
+          silent = true
         },
         {
           "<leader>ct",
           "<Plug>(git-conflict-theirs)",
           desc = "Next git conflict",
-          noremap = true, silent = true
+          noremap = true,
+          silent = true
         },
         {
           "<leader>cb",
           "<Plug>(git-conflict-both)",
           desc = "Next git conflict",
-          noremap = true, silent = true
+          noremap = true,
+          silent = true
         },
         {
           "<leader>c0",
           "<Plug>(git-conflict-none)",
           desc = "Next git conflict",
-          noremap = true, silent = true
+          noremap = true,
+          silent = true
         },
         {
           "<leader>cqf",
           ":GitCoflictListQf<cr>",
           desc = "Next git conflict",
-          noremap = true, silent = true
+          noremap = true,
+          silent = true
         },
       }
     }
@@ -130,8 +137,8 @@ local plugins = {
   -- Remote development
   {
     {
-    "https://codeberg.org/esensar/nvim-dev-container",
-    config = true
+      "https://codeberg.org/esensar/nvim-dev-container",
+      config = true
     },
     {
       "jamestthompson3/nvim-remote-containers",
@@ -223,7 +230,8 @@ local plugins = {
         "<leader>es",
         "<cmd>lua require('luasnip.loaders').edit_snippet_files()",
         desc = "Edit snippet file",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
     },
     build = "make install_jsregexp",
@@ -264,103 +272,120 @@ local plugins = {
         "<leader>fs",
         "<cmd>Telescope file_browser<cr>",
         desc = "Telescope File Browser",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>ff",
         "<cmd>lua require('telescope.builtin').find_files()<cr>",
         desc = "Telescope Files",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fg",
         "<cmd>lua require('telescope.builtin').live_grep()<cr>",
         desc = "Telescope Live Grep",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fb",
         "<cmd>lua require('telescope.builtin').buffers()<cr>",
         desc = "Telescope Buffers",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fh",
         "<cmd>lua require('telescope.builtin').help_tags()<cr>",
         desc = "Telescope Help Files",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fk",
         "<cmd>lua require('telescope.builtin').keymaps()<cr>",
         desc = "Telescope Keymaps",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fc",
         "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
         desc = "Telescope Colorschemes",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fo",
         "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
         desc = "Telescope Old files",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fq",
         "<cmd>lua require('telescope.builtin').quickfix()<cr>",
         desc = "Telescope Quickfix List",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>pj",
         "<cmd>lua require('telescope').extensions.project.project()<cr>",
         desc = "Telescope Projects",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>bb",
         "<cmd>lua require('telescope').extensions.bookmarks.bookmarks()<cr>",
         desc = "Telescope Bookmarks",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>frp",
         "<cmd>lua require('telescope').extensions.repo.repo()<cr>",
         desc = "Telescope respositories",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fre",
         "<cmd>lua require('telescope.builtin').resume()<cr>",
         desc = "Open last Telescope search",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>frg",
         "<cmd>lua require('telescope.builtin').registers()<cr>",
         desc = "Telescope registers",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fmk",
         "<cmd>lua require('telescope.builtin').marks()<cr>",
         desc = "Telescope marks",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fmd",
         "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>",
         desc = "Telescope Media Files",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>fpi",
         "<cmd>lua require('telescope').extensions.find_pickers.find_pickers()<cr>",
         desc = "Telescope pickers",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
     }
   },
@@ -385,7 +410,8 @@ local plugins = {
         "<leader>ut",
         "<cmd>lua require('undotree').toggle()<cr>",
         desc = "Toggle Undotree",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       }
     }
   },
@@ -486,70 +512,81 @@ local plugins = {
 
 
   {
-    "mfussenegger/nvim-dap";
+    "mfussenegger/nvim-dap",
     keys = {
       {
-        "<Leader>dB", "<cmd>lua require('dap').set_breakpoint()<cr>",
+        "<Leader>dB",
+        "<cmd>lua require('dap').set_breakpoint()<cr>",
         desc = "Dap set breakpoint",
         noremap = true,
         silent = true,
       },
       {
-        "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>",
+        "<leader>db",
+        "<cmd>lua require('dap').toggle_breakpoint()<cr>",
         desc = "Dap toggle breakpoint",
         noremap = true,
         silent = true,
       },
       {
-        "<leader>dd", "<cmd>lua require('dap').continue()<cr>",
+        "<leader>dd",
+        "<cmd>lua require('dap').continue()<cr>",
         desc = "Dap Continue",
         noremap = true,
         silent = true,
       },
       {
-        "<leader>ds", "<cmd>lua require('dap').step_over()<cr>",
+        "<leader>ds",
+        "<cmd>lua require('dap').step_over()<cr>",
         desc = "Dap Step Over",
         noremap = true,
         silent = true,
       },
       {
-        "<leader>di", "<cmd>lua require('dap').step_into()<cr>",
+        "<leader>di",
+        "<cmd>lua require('dap').step_into()<cr>",
         desc = "Dap Step Into",
         noremap = true,
         silent = true,
       },
       {
-        "<leader>dr", "<cmd>lua require('dap').repl_open()<cr>",
+        "<leader>dr",
+        "<cmd>lua require('dap').repl_open()<cr>",
         desc = "Dap Toggle Repl",
         noremap = true,
         silent = true,
       },
       {
-        "<leader>rl", "<cmd>lua require('dap').run_last()<cr>",
+        "<leader>rl",
+        "<cmd>lua require('dap').run_last()<cr>",
         desc = "Dap Run Last",
         noremap = true,
         silent = true,
       },
       {
-        '<Leader>dh', "<cmd>lua require('dap.ui.widgets').hover()<cr>",
+        '<Leader>dh',
+        "<cmd>lua require('dap.ui.widgets').hover()<cr>",
         desc = "Dap Hover",
         noremap = true,
         silent = true,
       },
       {
-        '<Leader>dp', "<cmd>lua require('dap.ui.widgets').preview())<cr>",
+        '<Leader>dp',
+        "<cmd>lua require('dap.ui.widgets').preview())<cr>",
         desc = "Dap Preview",
         noremap = true,
         silent = true,
       },
       {
-        '<Leader>df', "<cmd>lua require('dap.ui.widgets').centered_float(widgets.frames)<cr>",
+        '<Leader>df',
+        "<cmd>lua require('dap.ui.widgets').centered_float(widgets.frames)<cr>",
         desc = "Dap Frames",
         noremap = true,
         silent = true,
       },
       {
-        '<Leader>ds', "<cmd>lua require('dap.ui.widgets').centered_float(widgets.scopes)<cr>",
+        '<Leader>ds',
+        "<cmd>lua require('dap.ui.widgets').centered_float(widgets.scopes)<cr>",
         desc = "Dap scopes",
         noremap = true,
         silent = true,
@@ -572,31 +609,36 @@ local plugins = {
         "<leader>tt",
         "<cmd>Trouble<cr>",
         desc = "Toggle trouble.nvim",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>td",
         "<cmd>Trouble diagnostics<cr>",
         desc = "Document diagnostics on trouble.nvim",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>tl",
         "<cmd>Trouble loclist<cr>",
         desc = "Loclist on trouble.nvim",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>tq",
         "<cmd>Trouble quickfix<cr>",
         desc = "Quickfixlist on trouble.nvim",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       },
       {
         "<leader>tr",
         "<cmd>Trouble lsp_references<cr>",
         desc = "LSP references on trouble.nvim",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       }
     }
   },
@@ -649,17 +691,30 @@ local plugins = {
       build = 'go build',
       ft = "tex",
       keys = {
-        { "<leader>ll", ":TexlabBuild<cr>",   desc = "Build with Texlab", noremap = true, silent = true },
-        { "<leader>lL", ":TexlabCancelBuild<cr>",   desc = "Build with Texlab", noremap = true, silent = true },
-        { "<leader>lc", ":TexlabCleanAuxiliary<cr>",   desc = "Build with Texlab", noremap = true, silent = true },
-        { "<leader>lv", ":TexlabForward<cr>", desc = "Forwward Search",   noremap = true, silent = true }
+        { "<leader>ll", ":TexlabBuild<cr>",          desc = "Build with Texlab", noremap = true, silent = true },
+        { "<leader>lL", ":TexlabCancelBuild<cr>",    desc = "Build with Texlab", noremap = true, silent = true },
+        { "<leader>lc", ":TexlabCleanAuxiliary<cr>", desc = "Build with Texlab", noremap = true, silent = true },
+        { "<leader>lv", ":TexlabForward<cr>",        desc = "Forwward Search",   noremap = true, silent = true }
       }
     }
   },
 
   {
-    "simrat39/rust-tools.nvim",
+    "Thiago4532/mdmath.nvim",
+    ft = { "markdown" },
+    opts = {
+      filetypes = { "markdown" },
+    }
+  },
+
+  {
     "Saecki/crates.nvim"
+  },
+
+  {
+    "mrcjkb/rustaceanvim",
+    version = '^5',
+    lazy = false
   },
 
   {
@@ -679,7 +734,7 @@ local plugins = {
 
   {
     "kiyoon/jupynium.nvim",
-    build = "pip3 install --user .",
+    build = "pipx install --user .",
   },
 
   {
@@ -735,12 +790,13 @@ local plugins = {
         "<M-c>",
         ":JdtCompile",
         desc = "Compile",
-        noremap = true, silent = true
+        noremap = true,
+        silent = true
       }
     }
   },
 
-  { 'whonore/Coqtail'},
+  { 'whonore/Coqtail' },
 
   {
     'tomtomjhj/vscoq.nvim',
@@ -759,13 +815,77 @@ local plugins = {
       "3rd/image.nvim"
     },
     keys = {
-      {"<leader>nt", ":Neotree<CR>", desc = "Open Neotree"},
+      { "<leader>nt", ":Neotree<CR>", desc = "Open Neotree" },
     }
-  }
+  },
 
+  {
+    'subnut/nvim-ghost.nvim'
+  },
+
+  {
+    "lewis6991/hover.nvim",
+    config = {
+      init = function()
+        -- Require providers
+        require("hover.providers.lsp")
+        require('hover.providers.gh')
+        require('hover.providers.gh_user')
+        require('hover.providers.jira')
+        require('hover.providers.dap')
+        require('hover.providers.fold_preview')
+        require('hover.providers.diagnostic')
+        require('hover.providers.man')
+        require('hover.providers.dictionary')
+      end,
+      preview_opts = {
+        border = 'single'
+      },
+      -- Whether the contents of a currently open hover window should be moved
+      -- to a :h preview-window when pressing the hover keymap.
+      preview_window = false,
+      title = true,
+      mouse_providers = {
+        'LSP'
+      },
+      mouse_delay = 1000
+    },
+
+    keys = {
+      {
+        "K",
+        function()
+          local api = vim.api
+          local hover_win = vim.b.hover_preview
+          if hover_win and api.nvim_win_is_valid(hover_win) then
+            api.nvim_set_current_win(hover_win)
+          else
+            require("hover").hover()
+          end
+        end,
+        desc = "Hover"
+      },
+      { "gK",          "<cmd>lua require('hover').hover_select()<cr>",           desc = "Hover (select)" },
+      { "<C-p>",       "<cmd>lua require('hover').hover_switch('previous')<cr>", desc = "Hover (previous source)" },
+      { "<C-n>",       "<cmd>lua require('hover').hover_switch('next')<cr>",     desc = "Hover (next source)" },
+      { "<MouseMove>", "<cmd>lua require('hover').hover_mouse()<cr>",            desc = "Hover (mouse)" }
+    },
+
+    lazy = true
+  },
+
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    config = true,
+  },
 }
 
-local opts = {}
+local opts = {
+  rocks = {
+    hererocks = true
+  },
+}
 
 require("lazy").setup(plugins, opts)
 

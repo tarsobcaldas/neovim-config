@@ -1,5 +1,6 @@
 local on_attach = require("noa.lsp.handlers").on_attach
 local capabilities = require("noa.lsp.handlers").capabilities
+
 local executable = 'sioyek'
 local args = {
    "--reuse-window",
@@ -27,18 +28,16 @@ require("lspconfig").texlab.setup {
         args = { "-interaction=nonstopmode", "-synctex=1", "-shell-escape", "-lualatex", "%f" },
         executable = "latexmk",
         forwardSearchAfter = true,
-        -- onSave = true,
       },
       chktex = {
         onOpenAndSave = true,
         onEdit = true
       },
-      -- auxDirectory = { "." },
-      -- latexFormatter = { "latexindent" },
-      -- latexindent = {
-      --       ['local'] = vim.fn.expand("~/.indentconfig.yaml"),
-      --   modifyLineBreaks = true
-      -- },
+      latexindent = {
+        ['local'] = vim.fn.expand("~/.indentconfig.yaml"),
+        modifyLineBreaks = true,
+        replacement = "-r"
+      },
       forwardSearch = {
         executable = executable,
         args = args,

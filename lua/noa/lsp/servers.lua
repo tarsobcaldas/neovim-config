@@ -7,7 +7,7 @@ require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = {
     "ltex", "texlab", "remark_ls", "lua_ls", "perlnavigator", "html",
-    "yamlls", "clangd", "rust_analyzer", "jdtls"
+    "yamlls", "clangd", "jdtls"
   },
   automatic_installation = {exclude = {"hls"}}
 }

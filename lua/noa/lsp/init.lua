@@ -3,7 +3,6 @@ if not status_ok then
 	return
 end
 
-
 require("noa.lsp.handlers")
 require("noa.lsp.lint")
 require("noa.lsp.servers")

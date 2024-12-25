@@ -1,5 +1,4 @@
 local null_ls = require("null-ls")
--- local mason_null_ls = require("mason_null_ls")
 
 -- register any number of sources simultaneously
 local sources = {

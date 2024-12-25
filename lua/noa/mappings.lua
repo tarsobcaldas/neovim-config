@@ -9,7 +9,6 @@ local function noremap(mode, shortcut, command)
 end
 
 local normal_mappings = {
-
   -- Leap
 
   ["]b"] = "<cmd>BufferLineCycleNext<cr>",

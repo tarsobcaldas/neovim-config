@@ -1,5 +1,5 @@
-local on_attach = require("noa.lsp.handlers").on_attach
-local capabilities = require("noa.lsp.handlers").capabilities
+-- local on_attach = require("noa.lsp.handlers").on_attach
+-- local capabilities = require("noa.lsp.handlers").capabilities
 
 
 -- require('lspconfig').hls.setup{

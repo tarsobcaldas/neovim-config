@@ -48,10 +48,10 @@ telescope.setup({
     },
     file_browser = {
       theme = "ivy",
-      filetypes = {"png", "jpg", "mp4", "webm", "pdf"}
     },
     media_files = {
-      find_cmd = "rg"
+      find_cmd = "rg",
+      filetypes = {"png", "jpg", "mp4", "webm", "pdf"}
     },
     bookmarks = {
       selected_browser = "msedge",
