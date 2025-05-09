@@ -6,4 +6,3 @@ end
 require("noa.lsp.handlers")
 require("noa.lsp.lint")
 require("noa.lsp.servers")
-require("noa.lsp.null-ls")

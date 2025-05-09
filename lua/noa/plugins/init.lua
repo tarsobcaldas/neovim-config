@@ -497,8 +497,6 @@ local plugins = {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-      "jay-babu/mason-null-ls.nvim",
       "mfussenegger/nvim-lint",
       "barreiroleo/ltex-extra.nvim",
       { "folke/lsp-colors.nvim" },
@@ -652,7 +650,7 @@ local plugins = {
     "folke/noice.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader><leader>", "<cmd>NoiceDismiss<cr>", noremap = true, silent = true }
+      { "<leader><leader>", "<cmd>NoiceDismiss<cr>", desc = "Dismiss notifications", noremap = true, silent = true }
     },
     opts = {
       lsp = {
@@ -692,9 +690,9 @@ local plugins = {
       ft = "tex",
       keys = {
         { "<leader>ll", ":TexlabBuild<cr>",          desc = "Build with Texlab", noremap = true, silent = true },
-        { "<leader>lL", ":TexlabCancelBuild<cr>",    desc = "Build with Texlab", noremap = true, silent = true },
-        { "<leader>lc", ":TexlabCleanAuxiliary<cr>", desc = "Build with Texlab", noremap = true, silent = true },
-        { "<leader>lv", ":TexlabForward<cr>",        desc = "Forwward Search",   noremap = true, silent = true }
+        { "<leader>lL", ":TexlabCancelBuild<cr>",    desc = "Cancel build", noremap = true, silent = true },
+        { "<leader>lc", ":TexlabCleanAuxiliary<cr>", desc = "Clean auxiliary files", noremap = true, silent = true },
+        { "<leader>lv", ":TexlabForward<cr>",        desc = "Forward Search",   noremap = true, silent = true }
       }
     }
   },
@@ -825,7 +823,7 @@ local plugins = {
 
   {
     "lewis6991/hover.nvim",
-    config = {
+    opts = {
       init = function()
         -- Require providers
         require("hover.providers.lsp")

@@ -1,16 +1,25 @@
-
 ---@diagnostic disable: missing-fields
 local lualine    = require('lualine')
 local tsconfig   = require("nvim-treesitter.configs")
 local tsinstall  = require('nvim-treesitter.install')
 local bufferline = require('bufferline')
-local tokyonight = require("tokyonight")
+local kanagawa = require("kanagawa")
 
-tokyonight.setup {
-  style = "night"
-}
+kanagawa.setup({
+  overrides = function(colors)
+  return {
+      RainbowDelimiterRed = { fg = colors.palette.waveRed },
+      RainbowDelimiterYellow = { fg = colors.palette.carpYellow },
+      RainbowDelimiterBlue = { fg = colors.palette.dragonBlue },
+      RainbowDelimiterOrange = { fg = colors.palette.surimiOrange },
+      RainbowDelimiterGreen = { fg = colors.palette.springGreen },
+      RainbowDelimiterViolet = { fg = colors.palette.oniViolet },
+      RainbowDelimiterCyan = { fg = colors.palette.waveAqua1 },
+    }
+  end,
+})
 
-local default_colorscheme = tokyonight
+local default_colorscheme = kanagawa
 
 default_colorscheme.load()
 

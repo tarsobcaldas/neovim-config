@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.bo[buffer].tagfunc = 'v:lua.vim.lsp.tagfunc'
     end
     for key, cmd in pairs(lsp_keys) do
-      if client.supports_method('textDocument/' .. cmd) then
+      if client:supports_method('textDocument/' .. cmd) then
         vim.api.nvim_buf_set_keymap(buffer, 'n', key, '<cmd>lua vim.lsp.buf.' .. cmd .. '()<CR>', opts)
       end
     end
