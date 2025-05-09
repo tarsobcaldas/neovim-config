@@ -2,19 +2,19 @@ local executors = require('rustaceanvim.executors')
 local bufnr = vim.api.nvim_get_current_buf()
 
 local normal_keys = {
-  ["J"] = "joinLines",
-  ["<leader>lr"] = "runnables",
+  ["J"] ={ "joinLines", desc = "Join lines" },
+  ["<leader>lr"] = { "runnables", desc = "Runnables" },
   ["<leader>rr"] = { "run", bang = true },
-  ["<leader>ca"] = "codeAction",
-  ["<leader>dr"] = "debug",
-  ["<leader>ld"] = "debuggables",
-  ["<leader>od"] = "openDocs",
-  ["<leader>oc"] = "openCargo"
+  ["<leader>ca"] = { "codeAction", desc = "Code actions" },
+  ["<leader>dr"] = { "debug", desc = "Debug" },
+  ["<leader>ld"] = { "debuggables", desc = "Debuggables"},
+  ["<leader>od"] = { "openDocs", desc = "Open documentation"},
+  ["<leader>oc"] = { "openCargo", desc = "Open cargo" }
 }
 local visual_keys = {
-  ["<leader>rr"] = "run",
-  ["<leader>ca"] = "codeAction",
-  ["<leader>dr"] = "debug",
+  ["<leader>rr"] = { "run", desc = "Run" },
+  ["<leader>ca"] = { "codeAction", desc = "Code actions"},
+  ["<leader>dr"] = { "debug", desc = "Debug" },
 }
 local insert_keys = {
   ["<A-a>"] = "<'a>",
